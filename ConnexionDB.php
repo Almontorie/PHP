@@ -18,10 +18,19 @@ class ConnexionDB extends PDO
 
     public function executeQuery($query, array $parameters = [])
     {
-        $this->stmt = parent::prepare($query);
-        foreach ($parameters as $name => $value){
-            $this->stmt->bindValue($name, $value[0], $value[1]);
+        try {
+            $this->stmt = parent::prepare($query);
+            foreach ($parameters as $name => $value) {
+                $this->stmt->bindValue($name, $value[0], $value[1]);
+            }
+            return $this->stmt->execute();
         }
-        return $this->stmt->execute();
+        catch (PDOException $e){
+            throw $e;
+        }
+    }
+
+    public function getResults(){
+        return $this->stmt->fetchall();
     }
 }

@@ -9,18 +9,6 @@
 require_once('ConnexionDB.php');
 
 
-function start()
-{
-    try {
-        $pseudo = 'Mitroglou';
-        $mdp = "Nul";
-        insertionUtilisateur($pseudo, $mdp);
-
-        parcoursTableUtilisateur();
-    } catch (PDOException $e) {
-        throw $e;
-    }
-}
 
 
 function connexion() {
@@ -54,7 +42,46 @@ function parcoursTableUtilisateur()
     try {
         $con = connexion();
         $query = 'SELECT * FROM Utilisateur';
-        $con->executeQuery($query,NULL);
+        $con->executeQuery($query);
+        return $con->getResults();
+    }
+    catch (PDOException $e){
+        throw $e;
+    }
+}
+
+function selectionLigne($pseudo)
+{
+    try {
+        $con = connexion();
+        $query = 'SELECT * FROM Utilisateur WHERE pseudo = :pseudo';
+
+        $con->executeQuery($query, array(
+            ':pseudo' => array($pseudo, PDO::PARAM_STR)
+        ));
+        return $con->getResults();
+    }
+    catch (PDOException $e){
+        throw $e;
+    }
+}
+
+
+//affiche la ligne modifiée
+function modifierLigne($pseudo, $modif, $champ){
+    try {
+        $con = connexion();
+        if ($modif == "pseudo")
+            $query = 'UPDATE Utilisateur SET pseudo = :modif WHERE pseudo = :pseudo ';
+        elseif ($modif == "mdp")
+            $query = 'UPDATE Utilisateur SET mdp = :modif WHERE pseudo = :pseudo ';
+
+        $con->executeQuery($query, array(
+            ':modif' => array($champ, PDO::PARAM_STR),
+            ':pseudo' => array($pseudo, PDO::PARAM_STR)
+        ));
+
+        return selectionLigne($pseudo);
     }
     catch (PDOException $e){
         throw $e;
