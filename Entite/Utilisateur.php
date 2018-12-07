@@ -32,6 +32,14 @@ class Utilisateur
     }
 
     /**
+     * @return mixed
+     */
+    public function getMdp()
+    {
+        return $this->mdp;
+    }
+
+    /**
      * @return array
      */
     public function getTabListe()

@@ -33,4 +33,8 @@ class ConnexionDB extends PDO
     public function getResults(){
         return $this->stmt->fetchall();
     }
+
+    public function getRowCount(){
+        return $this->stmt->rowCount();
+    }
 }

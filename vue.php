@@ -6,47 +6,15 @@
  * Time: 10:45
  */
 
-require_once ("controllerDB.php");
+require_once("Controller/UtilisateurController.php");
+require_once ("Gateway/ConnexionDB.php");
 
 try {
-    $pseudo = 'Mitroglou';
-    $mdp = "Nul";
-    //insertionUtilisateur($pseudo, $mdp);
+    $user = new UtilisateurController();
 
-    echo "Parcours table";
-    echo "<br/>";
+    $result = $user->connexionUtilisateur(["Alexandre BOUVARD","albouvard"]);
 
-    $results = parcoursTableUtilisateur();
-    foreach ($results as $row) {
-        echo $row['pseudo'];
-        echo " ";
-        echo $row['mdp'];
-        echo "<br/>";
-    }
-    echo "<br/>";
-
-
-    echo "Selection ligne";
-    echo "<br/>";
-
-    $results = selectionLigne("MitroglouNUL");
-    foreach ($results as $row) {
-        echo $row['pseudo'];
-        echo " ";
-        echo $row['mdp'];
-        echo "<br/>";
-    }
-    echo "<br/>";
-
-    echo "Modifier ligne";
-    echo "<br/>";
-    $results = modifierLigne("MitroglouNUL","mdp","ttt");
-
-    echo $results[0]['pseudo'];
-    echo " ";
-    echo $results[0]['mdp'];
-    echo "<br/>";
-
+    echo $result;
 
 } catch (PDOException $e) {
     echo $e->getMessage();

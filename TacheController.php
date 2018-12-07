@@ -6,9 +6,9 @@
  * Time: 09:44
  */
 
-    require_once("TacheGateway.php");
-    require_once("Tache.php");
-    require_once ("ConnexionDB.php");
+    require_once("Gateway/TacheGateway.php");
+    require_once("Entite/Tache.php");
+    require_once("Gateway/ConnexionDB.php");
 
     $description = filter_var($_POST['description'], FILTER_SANITIZE_STRING);
 
