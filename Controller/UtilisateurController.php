@@ -6,10 +6,12 @@
  * Time: 11:07
  */
 
-require_once("Modele/UtilisateurModele.php");
+require_once("../Modele/UtilisateurModele.php");
 
 class UtilisateurController
 {
+    private $utilisateur;
+
     public function __construct()
     {
 
@@ -31,12 +33,11 @@ class UtilisateurController
         try {
             $con = $this->connexion();
             $modele = new UtilisateurModele($con);
-            $result = $modele->find($POST[0], $POST[1]);
-            if ($result == 1) {
-                return "Connecté";
-            } else {
-                return "Connexion echouée";
-            }
+            $result = $modele->find($POST['pseudo'], $POST['mdp']);
+            if($result == NULL)
+                return "Connexion échoué";
+            $this->utilisateur = $result;
+            return "Bonjour ".$result->__toString();
         }
         catch (PDOException $e){
             throw $e;

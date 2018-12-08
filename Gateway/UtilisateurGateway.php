@@ -23,7 +23,10 @@ class UtilisateurGateway
             $this->con->executeQuery($query, array(
                 ':pseudo' => array($pseudo, PDO::PARAM_STR),
                 ':mdp' => array($mdp, PDO::PARAM_STR)));
-            return $this->con->getRowCount();
+            if($this->con->getRowCount() == 0)
+                return NULL;
+            $utilisateur = $this->con->getResults();
+            return new Utilisateur($utilisateur[0]['pseudo'],$utilisateur[0]['mdp']);
         }
         catch (PDOException $e) {
             throw $e;

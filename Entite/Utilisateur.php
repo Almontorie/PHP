@@ -52,4 +52,10 @@ class Utilisateur
         $this->tabListe[] = $liste;
     }
 
+    public function __toString()
+    {
+        return $this->pseudo;
+    }
+
+
 }

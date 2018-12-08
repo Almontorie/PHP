@@ -12,7 +12,7 @@ require_once ("Gateway/ConnexionDB.php");
 try {
     $user = new UtilisateurController();
 
-    $result = $user->connexionUtilisateur(["Alexandre BOUVARD","albouvard"]);
+    $result = $user->connexionUtilisateur(["Alexis BOUVARD","albouvard"]);
 
     echo $result;
 

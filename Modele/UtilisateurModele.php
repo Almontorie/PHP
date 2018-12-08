@@ -6,7 +6,8 @@
  * Time: 10:51
  */
 
-require_once ("Gateway/UtilisateurGateway.php");
+require_once ("../Gateway/UtilisateurGateway.php");
+require_once ("../Entite/Utilisateur.php");
 
 class UtilisateurModele
 {
@@ -20,7 +21,8 @@ class UtilisateurModele
     public function find($pseudo, $mdp){
         try {
             $utilisateurGateway = new UtilisateurGateway($this->con);
-            return $utilisateurGateway->read($pseudo, $mdp);
+            $utilisateur = $utilisateurGateway->read($pseudo, $mdp);
+            return $utilisateur;
         }
         catch (PDOException $e){
             throw $e;
