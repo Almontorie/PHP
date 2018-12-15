@@ -47,6 +47,15 @@ class Utilisateur
         return $this->tabListe;
     }
 
+    /**
+     * @param array $tabListe
+     */
+    public function setTabListe($tabListe)
+    {
+        $this->tabListe = $tabListe;
+    }
+
+
 
     public function ajouterListe($liste){
         $this->tabListe[] = $liste;

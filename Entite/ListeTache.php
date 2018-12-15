@@ -17,10 +17,9 @@ class ListeTache
      * @param $nom
      * @param array $listTache
      */
-    public function __construct($nom, array $listTache, $private)
+    public function __construct($nom, $private)
     {
         $this->nom = $nom;
-        $this->listTache = $listTache;
         $this->private = $private;
     }
 

@@ -7,8 +7,6 @@
  */
 
 require_once("../Controller/UtilisateurController.php");
-$_POST['pseudo'] = "";
-$_POST['mdp'] = "";
 
 ?>
 
@@ -27,7 +25,24 @@ try {
     if(! empty($_POST['pseudo']) && ! empty($_POST['mdp'])) {
         $user = new UtilisateurController();
         $result = $user->connexionUtilisateur($_POST);
-        echo $result;
+        if(!$result) {
+            echo "Connexion echouée";
+        }
+        else {
+            echo $_POST['pseudo'];
+            echo "<br/>";
+            $tab = $user->chargementTabListTache();
+            if($tab == NULL){
+                echo "Aucune liste de tâche";
+                echo "<br/>";
+            }
+            else {
+                foreach ($tab as $item) {
+                    echo $item->getNom();
+                    echo "<br/>";
+                }
+            }
+        }
     }
 
 

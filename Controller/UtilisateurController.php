@@ -7,6 +7,8 @@
  */
 
 require_once("../Modele/UtilisateurModele.php");
+require_once ("../Modele/ListeTacheModele.php");
+require_once("../Entite/Utilisateur.php");
 
 class UtilisateurController
 {
@@ -35,15 +37,22 @@ class UtilisateurController
             $modele = new UtilisateurModele($con);
             $result = $modele->find($POST['pseudo'], $POST['mdp']);
             if($result == NULL)
-                return "Connexion échoué";
+                return false;
             $this->utilisateur = $result;
-            return "Bonjour ".$result->__toString();
+            return true;
         }
         catch (PDOException $e){
             throw $e;
         }
     }
 
-
-
+    public function chargementTabListTache(){
+        $con=$this->connexion();
+        $modele = new ListeTacheModele($con);
+        $result = $modele->load($this->utilisateur->getPseudo());
+        if($result == NULL)
+            return NULL;
+        $this->utilisateur->setTabListe($result);
+        return $result;
+    }
 }
