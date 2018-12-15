@@ -30,6 +30,22 @@ class ListeTacheModele
     }
 
     public function add($pseudo, $nom){
+        try {
+            $listTacheGateway = new ListeTacheGateway(($this->con));
+            $listTacheGateway->add($pseudo, $nom);
+        }
+        catch (PDOException $e){
+            throw $e;
+        }
+    }
 
+    public function delete($id){
+        try {
+            $listTacheGateway = new ListeTacheGateway(($this->con));
+            $listTacheGateway->delete($id);
+        }
+        catch (PDOException $e){
+            throw $e;
+        }
     }
 }

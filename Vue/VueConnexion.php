@@ -8,6 +8,8 @@
 
 require_once("../Controller/UtilisateurController.php");
 
+session_start();
+
 ?>
 
 
@@ -29,19 +31,8 @@ try {
             echo "Connexion echouée";
         }
         else {
-            echo $_POST['pseudo'];
-            echo "<br/>";
-            $tab = $user->chargementTabListTache();
-            if($tab == NULL){
-                echo "Aucune liste de tâche";
-                echo "<br/>";
-            }
-            else {
-                foreach ($tab as $item) {
-                    echo $item->getNom();
-                    echo "<br/>";
-                }
-            }
+            $_SESSION['pseudo'] = $_POST['pseudo'];
+            header("Location: VueListeTache.php");
         }
     }
 

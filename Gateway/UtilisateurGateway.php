@@ -26,7 +26,7 @@ class UtilisateurGateway
             if($this->con->getRowCount() == 0)
                 return NULL;
             $utilisateur = $this->con->getResults();
-            return new Utilisateur($utilisateur[0]['pseudo'],$utilisateur[0]['mdp']);
+            return new Utilisateur($utilisateur[0]['pseudo']);
         }
         catch (PDOException $e) {
             throw $e;

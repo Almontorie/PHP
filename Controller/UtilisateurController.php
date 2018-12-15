@@ -19,6 +19,24 @@ class UtilisateurController
 
     }
 
+    /**
+     * @return mixed
+     */
+    public function getUtilisateur()
+    {
+        return $this->utilisateur;
+    }
+
+    /**
+     * @param mixed $utilisateur
+     */
+    public function setUtilisateur($utilisateur)
+    {
+        $this->utilisateur = $utilisateur;
+    }
+
+
+
     private function connexion() {
         try {
             $dsn = "mysql:host=localhost;dbname=dbalmontorie";
@@ -55,4 +73,17 @@ class UtilisateurController
         $this->utilisateur->setTabListe($result);
         return $result;
     }
+
+    public function ajouterListeTache($POST){
+        $con=$this->connexion();
+        $modele = new ListeTacheModele($con);
+        $modele->add($this->utilisateur->getPseudo(),$POST['nom']);
+    }
+
+    public function supprimerListeTache($POST){
+        $con=$this->connexion();
+        $modele = new ListeTacheModele($con);
+        $modele->delete($POST['id']);
+    }
+
 }

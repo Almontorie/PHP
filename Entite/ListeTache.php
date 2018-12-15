@@ -11,16 +11,26 @@ class ListeTache
     private $nom;
     private $listTache = [];
     private $private;
+    private $id;
 
     /**
      * ListeTache constructor.
      * @param $nom
      * @param array $listTache
      */
-    public function __construct($nom, $private)
+    public function __construct($nom, $private, $id)
     {
         $this->nom = $nom;
         $this->private = $private;
+        $this->id = $id;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getId()
+    {
+        return $this->id;
     }
 
     /**

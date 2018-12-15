@@ -9,7 +9,6 @@
 class Utilisateur
 {
     private $pseudo;
-    private $mdp;
     private $tabListe = [];
 
     /**
@@ -17,10 +16,9 @@ class Utilisateur
      * @param $pseudo
      * @param $mdp
      */
-    public function __construct($pseudo, $mdp)
+    public function __construct($pseudo)
     {
         $this->pseudo = $pseudo;
-        $this->mdp = $mdp;
     }
 
     /**
@@ -34,10 +32,7 @@ class Utilisateur
     /**
      * @return mixed
      */
-    public function getMdp()
-    {
-        return $this->mdp;
-    }
+
 
     /**
      * @return array

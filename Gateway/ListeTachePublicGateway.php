@@ -3,12 +3,10 @@
  * Created by PhpStorm.
  * User: almontorie
  * Date: 15/12/18
- * Time: 07:30
+ * Time: 10:53
  */
-require_once("ConnexionDB.php");
 
-
-class ListeTacheGateway
+class ListeTachePublicGateway
 {
     private $con;
 
@@ -17,17 +15,16 @@ class ListeTacheGateway
         $this->con = $con;
     }
 
-    function read($pseudo)
+    function read()
     {
         try {
-            $query = 'SELECT * FROM ListeTache WHERE pseudo = :pseudo';
-            $this->con->executeQuery($query, array(
-                ':pseudo' => array($pseudo, PDO::PARAM_STR)));
+            $query = 'SELECT * FROM ListeTachePublic';
+            $this->con->executeQuery($query,NULL);
             if ($this->con->getRowCount() == 0)
                 return NULL;
             $result = $this->con->getResults();
             foreach ($result as $row){
-                $tabListTache[] = new ListeTache($row['nom'],true,$row['id']);
+                $tabListTache[] = new ListeTache($row['nom'],false,$row['id']);
             }
             return $tabListTache;
         } catch (PDOException $e) {
@@ -35,12 +32,11 @@ class ListeTacheGateway
         }
     }
 
-    function add($pseudo, $nom){
+    function add($nom){
         try {
-            $query = 'INSERT INTO ListeTache (nom, pseudo) VALUES (:nom, :pseudo)';
+            $query = 'INSERT INTO ListeTachePublic (nom) VALUES (:nom)';
             $this->con->executeQuery($query, array(
-                ':nom' => array($nom, PDO::PARAM_STR),
-                ':pseudo' => array($pseudo, PDO::PARAM_STR)));
+                ':nom' => array($nom, PDO::PARAM_STR)));
         } catch (PDOException $e) {
             throw $e;
         }
@@ -48,11 +44,12 @@ class ListeTacheGateway
 
     public function delete($id){
         try {
-            $query = 'DELETE FROM ListeTache WHERE id = :id';
+            $query = 'DELETE FROM ListeTachePublic WHERE id = :id';
             $this->con->executeQuery($query, array(
                 ':id' => array($id, PDO::PARAM_INT)));
         } catch (PDOException $e) {
             throw $e;
         }
     }
+
 }
