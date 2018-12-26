@@ -22,3 +22,6 @@ foreach ($tab as $item) {
 }
 
 ?>
+
+<button onclick="window.location.href='VueCreationListePublic.php'">Ajouter une liste de tâche publique</button>
+
