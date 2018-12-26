@@ -6,6 +6,8 @@
  * Time: 10:56
  */
 
+require_once ("../Gateway/ListeTachePublicGateway.php");
+
 class ListeTachePublicModele
 {
     private $con;

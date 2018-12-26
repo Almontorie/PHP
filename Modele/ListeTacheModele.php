@@ -8,6 +8,7 @@
 
 require_once ("../Entite/ListeTache.php");
 require_once ("../Gateway/ListeTacheGateway.php");
+require_once ("../Gateway/TacheGateway.php");
 
 class ListeTacheModele
 {
@@ -22,6 +23,13 @@ class ListeTacheModele
         try {
             $listTacheGateway = new ListeTacheGateway($this->con);
             $tabLisTache = $listTacheGateway->read($pseudo);
+
+            $tacheGateway = new TacheGateway($this->con);
+            foreach ($tabLisTache as $listeTache){
+                $result = $tacheGateway->read($listeTache->getId());
+                $listeTache->setListTache($result);
+            }
+
             return $tabLisTache;
         }
         catch (PDOException $e){

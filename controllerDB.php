@@ -14,8 +14,8 @@ require_once('ConnexionDB.php');
 function connexion() {
     try {
         $dsn = "mysql:host=localhost;dbname=dbalmontorie";
-        $user = "almontorie";
-        $passwd = "nulmitroglou";
+        $user = "root";
+        $passwd = "";
         return new ConnexionDB($dsn, $user, $passwd);
     }
     catch (PDOException $e){

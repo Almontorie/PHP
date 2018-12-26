@@ -6,6 +6,10 @@
  * Time: 08:47
  */
 
+require_once("ConnexionDB.php");
+require_once("../Entite/Tache.php");
+
+
 class TacheGateway
 {
 
@@ -21,16 +25,33 @@ class TacheGateway
     }
 
 
-    function insert($tache){
+    function add($nom){
         try {
             $con = connexion();
             $query = 'INSERT into Tache values(:des,NULL)';
             $con->executeQuery($query, array(
-                ':des' => array($tache->getNom(), PDO::PARAM_STR)));
+                ':des' => array($nom, PDO::PARAM_STR)));
         }
         catch (PDOException $e) {
             throw $e;
         }
     }
+
+    function read($idListeTache){
+        try {
+            $tabTache = [];
+            $query = 'SELECT * FROM Tache WHERE idListeTache = :id';
+            $this->con->executeQuery($query, array(
+                ':id' => array($idListeTache, PDO::PARAM_STR)));
+            $result = $this->con->getResults();
+            foreach ($result as $row) {
+                $tabTache[] = new Tache($row['nom']);
+            }
+            return $tabTache;
+        } catch (PDOException $e) {
+            throw $e;
+        }
+    }
+
 
 }

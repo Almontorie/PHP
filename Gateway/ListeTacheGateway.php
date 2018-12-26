@@ -7,7 +7,6 @@
  */
 require_once("ConnexionDB.php");
 
-
 class ListeTacheGateway
 {
     private $con;
@@ -26,6 +25,7 @@ class ListeTacheGateway
             if ($this->con->getRowCount() == 0)
                 return NULL;
             $result = $this->con->getResults();
+
             foreach ($result as $row){
                 $tabListTache[] = new ListeTache($row['nom'],true,$row['id']);
             }

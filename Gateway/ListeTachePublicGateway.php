@@ -6,6 +6,8 @@
  * Time: 10:53
  */
 
+require_once ("../Entite/ListeTache.php");
+
 class ListeTachePublicGateway
 {
     private $con;
@@ -19,7 +21,7 @@ class ListeTachePublicGateway
     {
         try {
             $query = 'SELECT * FROM ListeTachePublic';
-            $this->con->executeQuery($query,NULL);
+            $this->con->executeQuery($query);
             if ($this->con->getRowCount() == 0)
                 return NULL;
             $result = $this->con->getResults();

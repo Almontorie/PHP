@@ -13,6 +13,7 @@ class ListeTache
     private $private;
     private $id;
 
+
     /**
      * ListeTache constructor.
      * @param $nom
@@ -49,6 +50,13 @@ class ListeTache
         return $this->listTache;
     }
 
+    /**
+     * @param array $listTache
+     */
+    public function setListTache($listTache)
+    {
+        $this->listTache = $listTache;
+    }
 
 
 }

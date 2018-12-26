@@ -6,6 +6,9 @@
  * Time: 11:02
  */
 
+require_once ("../Gateway/ConnexionDB.php");
+require_once ('../Modele/ListeTachePublicModele.php');
+
 class VisiteurController
 {
 
@@ -17,8 +20,8 @@ class VisiteurController
     private function connexion() {
         try {
             $dsn = "mysql:host=localhost;dbname=dbalmontorie";
-            $user = "almontorie";
-            $passwd = "nulmitroglou";
+            $user = "root";
+            $passwd = "";
             return new ConnexionDB($dsn, $user, $passwd);
         }
         catch (PDOException $e){
