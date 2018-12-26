@@ -14,6 +14,11 @@ $tab = $user->chargementTabListTache();
 foreach ($tab as $item) {
     echo $item->getNom();
     echo "<br/>";
+    foreach ($item->getListTache() as $tache) {
+        echo " - ".$tache->getNom();
+        echo "<br/>";
+    }
+    echo "<br/>";
 }
 
 ?>

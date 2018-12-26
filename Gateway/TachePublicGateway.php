@@ -10,7 +10,7 @@ require_once("ConnexionDB.php");
 require_once("../Entite/Tache.php");
 
 
-class TacheGateway
+class TachePublicGateway
 {
 
     private $con;
@@ -28,7 +28,7 @@ class TacheGateway
     function add($nom){
         try {
             $con = connexion();
-            $query = 'INSERT into Tache values(:des,NULL)';
+            $query = 'INSERT into TachePublic values(:des,NULL)';
             $con->executeQuery($query, array(
                 ':des' => array($nom, PDO::PARAM_STR)));
         }
@@ -40,9 +40,9 @@ class TacheGateway
     function read($idListeTache){
         try {
             $tabTache = [];
-            $query = 'SELECT * FROM Tache WHERE idListeTache = :id';
+            $query = 'SELECT * FROM TachePublic WHERE idListeTache = :id';
             $this->con->executeQuery($query, array(
-                ':id' => array($idListeTache, PDO::PARAM_INT)));
+                ':id' => array($idListeTache, PDO::PARAM_STR)));
             $result = $this->con->getResults();
             foreach ($result as $row) {
                 $tabTache[] = new Tache($row['nom']);
@@ -55,7 +55,7 @@ class TacheGateway
 
     function delete($nom,$idListeTache){
         try {
-            $query = 'DELETE FROM Tache WHERE idListeTache = :idListeTache and nom = :nom';
+            $query = 'DELETE FROM TachePublic WHERE idListeTache = :idListeTache and nom = :nom';
             $this->con->executeQuery($query, array(
                 ':idListeTache' => array($idListeTache, PDO::PARAM_INT),
                 ':nom' => array($nom, PDO::PARAM_STR)));
@@ -63,6 +63,5 @@ class TacheGateway
             throw $e;
         }
     }
-
 
 }
