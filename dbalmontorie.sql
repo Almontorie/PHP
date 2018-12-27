@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  mer. 26 déc. 2018 à 18:02
+-- Généré le :  jeu. 27 déc. 2018 à 22:34
 -- Version du serveur :  5.7.19
 -- Version de PHP :  5.6.31
 
@@ -35,20 +35,17 @@ CREATE TABLE IF NOT EXISTS `listetache` (
   `pseudo` varchar(50) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `pseudo` (`pseudo`)
-) ENGINE=MyISAM AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=25 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `listetache`
 --
 
 INSERT INTO `listetache` (`id`, `nom`, `pseudo`) VALUES
-(3, 'courses', 'Alexis Bouvard'),
-(4, 'demain', 'Alexis Bouvard'),
-(5, 'ffez', 'Alexis Bouvard'),
-(6, 'snv', 'Alexis Bouvard'),
-(7, 'snv', 'Alexis Bouvard'),
-(8, 'yn', 'Alexis Bouvard'),
-(9, 'brd', 'Alexis Bouvard');
+(23, 'courses', 'Alexis Bouvard'),
+(18, 'yn', 'Alexis Bouvard'),
+(19, 'ffez', 'Alexis Bouvard'),
+(22, 'mardi', 'Alexis Bouvard');
 
 -- --------------------------------------------------------
 
@@ -61,14 +58,15 @@ CREATE TABLE IF NOT EXISTS `listetachepublic` (
   `nom` varchar(100) NOT NULL,
   `id` int(11) NOT NULL AUTO_INCREMENT,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=57 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `listetachepublic`
 --
 
 INSERT INTO `listetachepublic` (`nom`, `id`) VALUES
-('aller laba', 1);
+('???', 48),
+('ffez', 56);
 
 -- --------------------------------------------------------
 
@@ -80,7 +78,7 @@ DROP TABLE IF EXISTS `tache`;
 CREATE TABLE IF NOT EXISTS `tache` (
   `nom` varchar(200) NOT NULL,
   `idListeTache` int(11) NOT NULL,
-  PRIMARY KEY (`nom`),
+  PRIMARY KEY (`nom`,`idListeTache`),
   KEY `idListeTache` (`idListeTache`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
@@ -89,8 +87,42 @@ CREATE TABLE IF NOT EXISTS `tache` (
 --
 
 INSERT INTO `tache` (`nom`, `idListeTache`) VALUES
+('aaaaa', 18),
+('Ã§a', 23),
+('bbbbbb', 18),
+('ca', 19),
+('ca', 23),
 ('faire 2 pas', 4),
-('faire 3 pas', 4);
+('faire 3 pas', 4),
+('snv', 22);
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `tachepublic`
+--
+
+DROP TABLE IF EXISTS `tachepublic`;
+CREATE TABLE IF NOT EXISTS `tachepublic` (
+  `nom` varchar(200) NOT NULL,
+  `idListeTache` int(11) NOT NULL,
+  PRIMARY KEY (`nom`,`idListeTache`),
+  KEY `idListeTachePublic` (`idListeTache`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Déchargement des données de la table `tachepublic`
+--
+
+INSERT INTO `tachepublic` (`nom`, `idListeTache`) VALUES
+('Ã§a', 23),
+('ca', 48),
+('ca', 56),
+('mardi', 54),
+('passer par la', 1),
+('puis Ã§a', 23),
+('puis ca', 56),
+('yn', 48);
 
 -- --------------------------------------------------------
 

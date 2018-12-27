@@ -36,3 +36,6 @@ try {
 }
 
 ?>
+
+<button onclick="window.location.href='VueAccueil.php'">Retour</button>
+

@@ -11,6 +11,12 @@ require_once ("../Validation.php");
 
 session_start();
 
+/*
+ * à faire : -supprimer les tâches quand on supprime la liste
+ *           -probleme de clé primaire dans la table Tache (il ne prend que le nom en clé primaire, or il faut le couple nom et idListeTache)
+ */
+
+
 ?>
 <form method="post">
 <?php
