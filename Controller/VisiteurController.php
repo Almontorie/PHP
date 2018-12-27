@@ -37,8 +37,6 @@ class VisiteurController
         $con=$this->connexion();
         $modele = new ListeTachePublicModele($con);
         $result = $modele->load();
-        if($result == NULL)
-            return NULL;
         return $result;
     }
 
