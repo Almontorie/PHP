@@ -24,7 +24,12 @@ try {
     $tab = $user->chargementTabListTache();
     affichTab($tab);
 
-    if(isset($_POST['id'])) {
+    if(isset($_POST['id'])){
+        $_SESSION['id'] = $_POST['id'];
+        header("Location: VueCreationTache.php");
+    }
+
+    if(isset($_POST['idToDelete'])) {
         $user->supprimerListeTache($_POST);
         $tab = $user->chargementTabListTache();
         header("Location: VueListeTache.php");
@@ -46,7 +51,8 @@ function affichTab($tab){
         foreach ($tab as $item) {
             echo $item->getNom();
             ?>
-            <button type="submit" name="id" value="<?php echo $item->getId() ?>">Supprimer</button>
+            <button type="submit" name="id" value="<?php echo $item->getId() ?>">Ajouter une tâche</button>
+            <button type="submit" name="idToDelete" value="<?php echo $item->getId() ?>">Supprimer</button>
             <?php
             echo "<br/>";
             foreach ($item->getListTache() as $tache) {

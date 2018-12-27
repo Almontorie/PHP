@@ -9,6 +9,8 @@
 require_once ("../Controller/VisiteurController.php");
 require_once ("../Validation.php");
 
+session_start();
+
 ?>
 <form method="post">
 <?php
@@ -19,7 +21,12 @@ try {
 
     affichTab($tab);
 
-    if(isset($_POST['id'])) {
+    if(isset($_POST['id'])){
+        $_SESSION['id'] = $_POST['id'];
+        header("Location: VueCreationTachePublic.php");
+    }
+
+    if(isset($_POST['idToDelete'])) {
         $user->supprimerListeTache($_POST);
         $tab = $user->chargementTabListTache();
         header("Location: VueAccueil.php");
@@ -36,7 +43,8 @@ function affichTab($tab){
     foreach ($tab as $item) {
         echo $item->getNom();
         ?>
-        <button type="submit" name="id" value="<?php echo $item->getId() ?>">Supprimer</button>
+        <button type="submit" name="id" value="<?php echo $item->getId() ?>">Ajouter une tâche</button>
+        <button type="submit" name="idToDelete" value="<?php echo $item->getId() ?>">Supprimer</button>
         <?php
         echo "<br/>";
         foreach ($item->getListTache() as $tache) {

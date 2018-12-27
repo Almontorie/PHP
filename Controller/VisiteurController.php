@@ -9,7 +9,7 @@
 require_once ("../Gateway/ConnexionDB.php");
 require_once ('../Modele/ListeTachePublicModele.php');
 require_once ("../Validation.php");
-
+require_once ("../Modele/TachePublicModele.php");
 
 class VisiteurController
 {
@@ -54,7 +54,18 @@ class VisiteurController
     public function supprimerListeTache($POST){
         $con=$this->connexion();
         $modele = new ListeTachePublicModele($con);
-        $modele->delete($POST['id']);
+        $modele->delete($POST['idToDelete']);
+    }
+
+    public function ajouterTache($POST){
+        $POST['nom'] = $this->validation->validInput($POST['nom']);
+        if (! $this->validation->validTaskLength($POST['nom']))
+            return false;
+
+        $con = $this->connexion();
+        $modele = new TachePublicModele($con);
+        $modele->add($POST['nom'],$POST['id']);
+        return true;
     }
 
 }

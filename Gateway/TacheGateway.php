@@ -25,12 +25,12 @@ class TacheGateway
     }
 
 
-    function add($nom){
+    function add($nom,$idListeTache){
         try {
-            $con = connexion();
-            $query = 'INSERT into Tache values(:des,NULL)';
-            $con->executeQuery($query, array(
-                ':des' => array($nom, PDO::PARAM_STR)));
+            $query = 'INSERT into Tache values(:des,:id)';
+            $this->con->executeQuery($query, array(
+                ':des' => array($nom, PDO::PARAM_STR),
+                ':id' => array($idListeTache, PDO::PARAM_INT)));
         }
         catch (PDOException $e) {
             throw $e;

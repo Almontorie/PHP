@@ -25,12 +25,12 @@ class TachePublicGateway
     }
 
 
-    function add($nom){
+    function add($nom,$idListeTache){
         try {
-            $con = connexion();
-            $query = 'INSERT into TachePublic values(:des,NULL)';
-            $con->executeQuery($query, array(
-                ':des' => array($nom, PDO::PARAM_STR)));
+            $query = 'INSERT into TachePublic values(:des,:id)';
+            $this->con->executeQuery($query, array(
+                ':des' => array($nom, PDO::PARAM_STR),
+                ':id' => array($idListeTache, PdO::PARAM_INT)));
         }
         catch (PDOException $e) {
             throw $e;
