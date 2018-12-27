@@ -8,13 +8,17 @@
 
 require_once ("../Gateway/ConnexionDB.php");
 require_once ('../Modele/ListeTachePublicModele.php');
+require_once ("../Validation.php");
+
 
 class VisiteurController
 {
 
+    private $validation;
+
     public function __construct()
     {
-
+        $this->validation = new Validation();
     }
 
     private function connexion() {
@@ -39,9 +43,14 @@ class VisiteurController
     }
 
     public function ajouterListeTache($POST){
+        $POST['nom'] = $this->validation->validInput($POST['nom']);
+        if (! $this->validation->validListLength($POST['nom']))
+            return false;
+
         $con=$this->connexion();
         $modele = new ListeTachePublicModele($con);
         $modele->add($POST['nom']);
+        return true;
     }
 
     public function supprimerListeTache($POST){

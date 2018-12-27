@@ -9,14 +9,17 @@
 require_once("../Modele/UtilisateurModele.php");
 require_once ("../Modele/ListeTacheModele.php");
 require_once("../Entite/Utilisateur.php");
+require_once ("../Validation.php");
 
 class UtilisateurController
 {
     private $utilisateur;
+    private $validation;
+
 
     public function __construct()
     {
-
+        $this->validation = new Validation();
     }
 
     /**
@@ -53,6 +56,9 @@ class UtilisateurController
         try {
             $con = $this->connexion();
             $modele = new UtilisateurModele($con);
+
+            $POST['pseudo'] = $this->validation->validInput($POST['pseudo']);
+            $POST['mdp'] = $this->validation->validInput($POST['mdp']);
             $result = $modele->find($POST['pseudo'], $POST['mdp']);
             if($result == NULL)
                 return false;
@@ -75,9 +81,14 @@ class UtilisateurController
     }
 
     public function ajouterListeTache($POST){
+        $POST['nom'] = $this->validation->validInput($POST['nom']);
+        if (! $this->validation->validListLength($POST['nom']))
+            return false;
+
         $con=$this->connexion();
         $modele = new ListeTacheModele($con);
         $modele->add($this->utilisateur->getPseudo(),$POST['nom']);
+        return true;
     }
 
     public function supprimerListeTache($POST){

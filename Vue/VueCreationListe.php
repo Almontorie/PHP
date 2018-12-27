@@ -22,11 +22,13 @@ session_start();
 <?php
 
 try {
-    if(! empty($_POST['nom'])) {
+    if(isset($_POST['nom'])) {
         $user = new UtilisateurController();
         $user->setUtilisateur(new Utilisateur($_SESSION['pseudo']));
-        $user->ajouterListeTache($_POST);
-        header("Location: VueListeTache.php");
+        if (! $user->ajouterListeTache($_POST))
+            echo "Nom de la liste invalide (100 caractères max)";
+        else
+            header("Location: VueListeTache.php");
     }
 } catch (PDOException $e) {
     echo $e->getMessage();

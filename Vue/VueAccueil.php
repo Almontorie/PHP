@@ -7,6 +7,7 @@
  */
 
 require_once ("../Controller/VisiteurController.php");
+require_once ("../Validation.php");
 
 $user = new VisiteurController();
 $tab = $user->chargementTabListTache();

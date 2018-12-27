@@ -20,10 +20,12 @@ require_once ("../Controller/VisiteurController.php");
 <?php
 
 try {
-    if(! empty($_POST['nom'])) {
+    if(isset($_POST['nom'])) {
         $user = new VisiteurController();
-        $user->ajouterListeTache($_POST);
-        header("Location: VueAccueil.php");
+        if (! $user->ajouterListeTache($_POST))
+            echo "Nom de la liste invalide (100 caractères max)";
+        else
+            header("Location: VueAccueil.php");
     }
 } catch (PDOException $e) {
     echo $e->getMessage();
