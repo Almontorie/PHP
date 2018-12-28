@@ -22,13 +22,6 @@ class ListeTachePublicModele
         try {
             $listTachePublicGateway = new ListeTachePublicGateway($this->con);
             $tabLisTachePublic = $listTachePublicGateway->read();
-
-            $tacheGateway = new TachePublicGateway($this->con);
-            foreach ($tabLisTachePublic as $listeTache){
-                $result = $tacheGateway->read($listeTache->getId());
-                $listeTache->setListTache($result);
-            }
-
             return $tabLisTachePublic;
         }
         catch (PDOException $e){

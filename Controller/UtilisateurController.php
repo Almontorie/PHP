@@ -75,8 +75,13 @@ class UtilisateurController
         $con=$this->connexion();
         $modele = new ListeTacheModele($con);
         $result = $modele->load($this->utilisateur->getPseudo());
-        if($result == NULL)
-            return NULL;
+
+        $modeleTache = new TacheModele($con);
+        foreach ($result as $listTache){
+            $list = $modeleTache->read($listTache->getId());
+            $listTache->setListTache($list);
+        }
+
         $this->utilisateur->setTabListe($result);
         return $result;
     }

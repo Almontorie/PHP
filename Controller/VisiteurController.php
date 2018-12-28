@@ -11,6 +11,7 @@ require_once ('../Modele/ListeTachePublicModele.php');
 require_once ("../Validation.php");
 require_once ("../Modele/TachePublicModele.php");
 
+
 class VisiteurController
 {
 
@@ -37,6 +38,13 @@ class VisiteurController
         $con=$this->connexion();
         $modele = new ListeTachePublicModele($con);
         $result = $modele->load();
+
+        $modeleTache = new TachePublicModele($con);
+        foreach ($result as $listTache){
+            $list = $modeleTache->read($listTache->getId());
+            $listTache->setListTache($list);
+        }
+
         return $result;
     }
 
@@ -55,6 +63,9 @@ class VisiteurController
         $con=$this->connexion();
         $modele = new ListeTachePublicModele($con);
         $modele->delete($POST['idToDelete']);
+
+        $modeleTache = new TachePublicModele($con);
+        $modeleTache->deleteAll($POST['idToDelete']);
     }
 
     public function ajouterTache($POST){

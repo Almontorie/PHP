@@ -27,4 +27,14 @@ class TacheModele
         }
     }
 
+    public function read($idListeTache){
+        try{
+            $tacheGateway = new TacheGateway($this->con);
+            return $tacheGateway->read($idListeTache);
+
+        } catch (PDOException $e){
+            throw $e;
+        }
+    }
+
 }

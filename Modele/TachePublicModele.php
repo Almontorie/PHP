@@ -25,4 +25,24 @@ class TachePublicModele
         }
     }
 
+    public function read($idListeTache){
+        try{
+            $tachePublicGateway = new TachePublicGateway($this->con);
+            return $tachePublicGateway->read($idListeTache);
+
+        } catch (PDOException $e){
+            throw $e;
+        }
+    }
+
+    public function deleteAll($idListeTache){
+        try{
+            $tachePublicGateway = new TachePublicGateway($this->con);
+            $tachePublicGateway->deleteAll($idListeTache);
+
+        } catch (PDOException $e){
+            throw $e;
+        }
+    }
+
 }
