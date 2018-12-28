@@ -37,4 +37,14 @@ class TacheModele
         }
     }
 
+    public function deleteAll($idListeTache){
+        try{
+            $tacheGateway = new TacheGateway($this->con);
+            $tacheGateway->deleteAll($idListeTache);
+
+        } catch (PDOException $e){
+            throw $e;
+        }
+    }
+
 }

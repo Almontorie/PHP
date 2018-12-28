@@ -101,6 +101,9 @@ class UtilisateurController
         $con=$this->connexion();
         $modele = new ListeTacheModele($con);
         $modele->delete($POST['idToDelete']);
+
+        $modeleTache = new TacheModele($con);
+        $modeleTache->deleteAll($POST['idToDelete']);
     }
 
     public function ajouterTache($POST){

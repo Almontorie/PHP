@@ -64,5 +64,15 @@ class TacheGateway
         }
     }
 
+    function deleteAll($idListeTache){
+        try{
+            $query = 'DELETE FROM Tache WHERE idListeTache = :id';
+            $this->con->executeQuery($query, array(
+                ':id' => array($idListeTache, PDO::PARAM_INT)));
+        } catch (PDOException $e){
+            throw $e;
+        }
+    }
+
 
 }
