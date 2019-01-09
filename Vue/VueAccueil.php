@@ -52,6 +52,7 @@ try {
 
     if(isset($_POST['deconnexion'])) {
         $_SESSION['pseudo'] = null;
+        header("Location: VueAccueil.php");
     }
 
     if(isset($_POST['listetache'])){
@@ -86,7 +87,7 @@ function affichTab($tab){
 }
 
 function isConnected(){
-    if($_SESSION['pseudo'] != null)
+    if(isset($_SESSION['pseudo']) and $_SESSION['pseudo'] != null)
         return true;
     return false;
 }
