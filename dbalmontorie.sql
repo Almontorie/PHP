@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  jeu. 27 déc. 2018 à 22:34
+-- Généré le :  mer. 09 jan. 2019 à 19:39
 -- Version du serveur :  5.7.19
 -- Version de PHP :  5.6.31
 
@@ -35,17 +35,15 @@ CREATE TABLE IF NOT EXISTS `listetache` (
   `pseudo` varchar(50) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `pseudo` (`pseudo`)
-) ENGINE=MyISAM AUTO_INCREMENT=25 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=31 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `listetache`
 --
 
 INSERT INTO `listetache` (`id`, `nom`, `pseudo`) VALUES
-(23, 'courses', 'Alexis Bouvard'),
-(18, 'yn', 'Alexis Bouvard'),
-(19, 'ffez', 'Alexis Bouvard'),
-(22, 'mardi', 'Alexis Bouvard');
+(28, 'ffez', 'Alexis Bouvard'),
+(25, 'lundi', 'Alexis Bouvard');
 
 -- --------------------------------------------------------
 
@@ -58,14 +56,14 @@ CREATE TABLE IF NOT EXISTS `listetachepublic` (
   `nom` varchar(100) NOT NULL,
   `id` int(11) NOT NULL AUTO_INCREMENT,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=57 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=64 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `listetachepublic`
 --
 
 INSERT INTO `listetachepublic` (`nom`, `id`) VALUES
-('???', 48),
+('mardi', 61),
 ('ffez', 56);
 
 -- --------------------------------------------------------
@@ -87,14 +85,7 @@ CREATE TABLE IF NOT EXISTS `tache` (
 --
 
 INSERT INTO `tache` (`nom`, `idListeTache`) VALUES
-('aaaaa', 18),
-('Ã§a', 23),
-('bbbbbb', 18),
-('ca', 19),
-('ca', 23),
-('faire 2 pas', 4),
-('faire 3 pas', 4),
-('snv', 22);
+('ca', 28);
 
 -- --------------------------------------------------------
 
@@ -115,14 +106,10 @@ CREATE TABLE IF NOT EXISTS `tachepublic` (
 --
 
 INSERT INTO `tachepublic` (`nom`, `idListeTache`) VALUES
-('Ã§a', 23),
-('ca', 48),
 ('ca', 56),
-('mardi', 54),
-('passer par la', 1),
-('puis Ã§a', 23),
-('puis ca', 56),
-('yn', 48);
+('ca', 61),
+('ffez', 61),
+('snv', 61);
 
 -- --------------------------------------------------------
 
@@ -133,7 +120,7 @@ INSERT INTO `tachepublic` (`nom`, `idListeTache`) VALUES
 DROP TABLE IF EXISTS `utilisateur`;
 CREATE TABLE IF NOT EXISTS `utilisateur` (
   `pseudo` varchar(50) NOT NULL,
-  `mdp` varchar(20) NOT NULL,
+  `mdp` varchar(100) NOT NULL,
   PRIMARY KEY (`pseudo`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
@@ -142,7 +129,8 @@ CREATE TABLE IF NOT EXISTS `utilisateur` (
 --
 
 INSERT INTO `utilisateur` (`pseudo`, `mdp`) VALUES
-('Alexis Bouvard', 'albouvard');
+('Alexis Bouvard', '$2y$10$Nibnnmf6SxxSifSwaK8yWeo/P8oPiFNHtY2a2P09Lg/zG5.m1H/vS'),
+('lutorret', '$2y$10$UTyYN/bG6wDvGnLQ66FkjuIPhdzE8Tgw0p60JnvLAqT3BY.nbzXYK');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

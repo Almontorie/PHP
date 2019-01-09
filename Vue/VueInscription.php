@@ -1,18 +1,16 @@
 <?php
 /**
  * Created by PhpStorm.
- * User: almontorie
- * Date: 08/12/18
- * Time: 09:45
+ * User: lucas
+ * Date: 09/01/2019
+ * Time: 20:12
  */
 
 require_once("../Controller/UtilisateurController.php");
 
-session_start();
-
 ?>
 
-<text>Connexion</text>
+<text>Inscription</text>
 <P/>
 
 <FORM METHOD="post">
@@ -29,21 +27,19 @@ try {
 
     if(! empty($_POST['pseudo']) && ! empty($_POST['mdp'])) {
         $user = new UtilisateurController();
-        $result = $user->connexionUtilisateur($_POST);
+        $result = $user->inscriptionUtilisateur($_POST);
         if(!$result) {
-            echo "Connexion echouée";
+            echo "Pseudo déjà utilisé";
         }
         else {
-            $_SESSION['pseudo'] = $_POST['pseudo'];
-            header("Location: VueListeTache.php");
+            header("Location: VueConnexion.php");
         }
     }
 
-
-} catch (PDOException $e) {
+}
+catch(PDOException $e){
     echo $e->getMessage();
 }
-
 ?>
 
 <button onclick="window.location.href='VueAccueil.php'">Retour</button>

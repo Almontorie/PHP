@@ -71,15 +71,26 @@ class UtilisateurController
         }
     }
 
+    public function inscriptionUtilisateur($POST){
+        $con=$this->connexion();
+        $modele = new UtilisateurModele($con);
+
+        $POST['pseudo'] = $this->validation->validInput($POST['pseudo']);
+        $POST['mdp'] = $this->validation->validInput($POST['mdp']);
+        return $modele->create($POST['pseudo'],$POST['mdp']);
+    }
+
     public function chargementTabListTache(){
         $con=$this->connexion();
         $modele = new ListeTacheModele($con);
         $result = $modele->load($this->utilisateur->getPseudo());
 
         $modeleTache = new TacheModele($con);
-        foreach ($result as $listTache){
-            $list = $modeleTache->read($listTache->getId());
-            $listTache->setListTache($list);
+        if($result != null) {
+            foreach ($result as $listTache) {
+                $list = $modeleTache->read($listTache->getId());
+                $listTache->setListTache($list);
+            }
         }
 
         $this->utilisateur->setTabListe($result);

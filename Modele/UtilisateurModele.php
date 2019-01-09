@@ -28,4 +28,16 @@ class UtilisateurModele
             throw $e;
         }
     }
+
+    public function create($pseudo,$mdp){
+        try{
+            $utilisateurGateway = new UtilisateurGateway($this->con);
+            $result = $utilisateurGateway->add($pseudo,$mdp);
+            return $result;
+        }
+        catch (PDOException $e){
+            throw $e;
+        }
+
+    }
 }

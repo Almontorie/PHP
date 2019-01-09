@@ -94,10 +94,12 @@ function isConnected(){
 
 ?>
 
+    <button type="submit" name="listetache">Voir mes listes de tâches</button>
+    <p/>
     <button type="submit" name="connexion">Connexion</button>
     <button type="submit" name="deconnexion">Deconnexion</button>
-    <button type="submit" name="listetache">Voir mes listes de tâches</button>
 
 
 </form>
 <button onclick="window.location.href='VueCreationListePublic.php'">Ajouter une liste de tâche publique</button>
+<button onclick="window.location.href='VueInscription.php'">S'inscrire</button>
