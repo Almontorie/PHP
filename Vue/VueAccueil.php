@@ -12,7 +12,8 @@ require_once ("../Validation.php");
 session_start();
 
 /*
- * à faire : -supprimer les tâches quand on supprime la liste
+pour supprimer tache avec checkbox : début : checkbox value = index de la tache dans sa liste de taches (faire compteur dans foreach qui affiche les taches)
+mettre champ complete dans la bdd car recharger la page annule le setComplete(true);
  */
 
 
@@ -62,6 +63,18 @@ try {
             echo "Vous devez tout d'abord vous connecter";
     }
 
+    if(isset($_POST['checkbox'])){
+        echo "<br/>";
+        foreach ($_POST['checkbox'] as $tache){
+            $index = explode(" ",$tache);
+            $list = $tab[$index[1]]->getListTache();
+            $list[$index[0]]->setComplete(true);
+            echo "<br/>";
+        }
+        echo "<br/>";
+        affichTab($tab);
+        //header("Location: VueAccueil.php");
+    }
 
 
 } catch (PDOException $e){
@@ -71,6 +84,7 @@ try {
 <?php
 
 function affichTab($tab){
+    $indexList = 0;
     foreach ($tab as $item) {
         echo $item->getNom();
         ?>
@@ -78,11 +92,24 @@ function affichTab($tab){
         <button type="submit" name="idToDelete" value="<?php echo $item->getId() ?>">Supprimer</button>
         <?php
         echo "<br/>";
+        $indexTask = 0;
         foreach ($item->getListTache() as $tache) {
-            echo " - " . $tache->getNom();
+            if($tache->isComplete()) {
+                ?>
+                <s><?php echo " - ".$tache->getNom()?></s>
+                <?php
+            }
+            else {
+                echo " - " . $tache->getNom();
+            }
+            ?>
+            <input type="checkbox" name="checkbox[]" value="<?php echo $indexTask." ".$indexList ?>"/>
+            <?php
             echo "<br/>";
+            $indexTask++;
         }
         echo "<br/>";
+        $indexList++;
     }
 }
 
@@ -94,12 +121,18 @@ function isConnected(){
 
 ?>
 
+    <input type="submit" value="Valider les tâches" />
+    <br/>
+    <br/>
     <button type="submit" name="listetache">Voir mes listes de tâches</button>
-    <p/>
+    <br/>
+    <br/>
     <button type="submit" name="connexion">Connexion</button>
     <button type="submit" name="deconnexion">Deconnexion</button>
 
-
 </form>
+
 <button onclick="window.location.href='VueCreationListePublic.php'">Ajouter une liste de tâche publique</button>
+<br/>
+<br/>
 <button onclick="window.location.href='VueInscription.php'">S'inscrire</button>
