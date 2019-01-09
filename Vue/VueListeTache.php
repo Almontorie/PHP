@@ -35,12 +35,16 @@ try {
         header("Location: VueListeTache.php");
     }
 
+    if(isset($_POST['deconnexion'])){
+        $_SESSION['pseudo'] = null;
+        header("Location: VueAccueil.php");
+    }
+
     echo "<br/>";
 } catch (PDOException $e){
     echo $e->getMessage();
 }
 ?>
-</form>
 <?php
 
 function affichTab($tab){
@@ -66,6 +70,9 @@ function affichTab($tab){
 }
 
 ?>
+    <button type="submit" name="deconnexion">Deconnexion</button>
+</form>
 
 
 <button onclick="window.location.href='VueCreationListe.php'">Ajouter une liste de tâche</button>
+<button onclick="window.location.href='VueAccueil.php'">Accueil</button>

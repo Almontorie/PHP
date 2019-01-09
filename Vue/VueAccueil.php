@@ -24,6 +24,12 @@ try {
     $user = new VisiteurController();
     $tab = $user->chargementTabListTache();
 
+    if(isConnected()) {
+        echo "Hello " . $_SESSION['pseudo'];
+        echo "<br/>";
+    }
+    echo "<br/>";
+
     affichTab($tab);
 
     if(isset($_POST['id'])){
@@ -37,11 +43,30 @@ try {
         header("Location: VueAccueil.php");
     }
 
+    if(isset($_POST['connexion'])) {
+        if(isConnected())
+            echo "<br/> Vous êtes déjà connecté";
+        else
+            header("Location: VueConnexion.php");
+    }
+
+    if(isset($_POST['deconnexion'])) {
+        $_SESSION['pseudo'] = null;
+    }
+
+    if(isset($_POST['listetache'])){
+        if(isConnected())
+            header("Location: VueListeTache.php");
+        else
+            echo "Vous devez tout d'abord vous connecter";
+    }
+
+
+
 } catch (PDOException $e){
     echo $e->getMessage();
 }
 ?>
-</form>
 <?php
 
 function affichTab($tab){
@@ -60,6 +85,18 @@ function affichTab($tab){
     }
 }
 
+function isConnected(){
+    if($_SESSION['pseudo'] != null)
+        return true;
+    return false;
+}
+
 ?>
 
+    <button type="submit" name="connexion">Connexion</button>
+    <button type="submit" name="deconnexion">Deconnexion</button>
+    <button type="submit" name="listetache">Voir mes listes de tâches</button>
+
+
+</form>
 <button onclick="window.location.href='VueCreationListePublic.php'">Ajouter une liste de tâche publique</button>

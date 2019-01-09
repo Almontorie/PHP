@@ -24,6 +24,7 @@ session_start();
 <?php
 
 try {
+
     if(! empty($_POST['pseudo']) && ! empty($_POST['mdp'])) {
         $user = new UtilisateurController();
         $result = $user->connexionUtilisateur($_POST);

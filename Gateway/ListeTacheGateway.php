@@ -19,7 +19,7 @@ class ListeTacheGateway
     function read($pseudo)
     {
         try {
-            $query = 'SELECT * FROM ListeTache WHERE pseudo = :pseudo';
+            $query = 'SELECT * FROM listetache WHERE pseudo = :pseudo';
             $this->con->executeQuery($query, array(
                 ':pseudo' => array($pseudo, PDO::PARAM_STR)));
             if ($this->con->getRowCount() == 0)
@@ -37,7 +37,7 @@ class ListeTacheGateway
 
     function add($pseudo, $nom){
         try {
-            $query = 'INSERT INTO ListeTache (nom, pseudo) VALUES (:nom, :pseudo)';
+            $query = 'INSERT INTO listetache (nom, pseudo) VALUES (:nom, :pseudo)';
             $this->con->executeQuery($query, array(
                 ':nom' => array($nom, PDO::PARAM_STR),
                 ':pseudo' => array($pseudo, PDO::PARAM_STR)));
@@ -48,7 +48,7 @@ class ListeTacheGateway
 
     public function delete($id){
         try {
-            $query = 'DELETE FROM ListeTache WHERE id = :id';
+            $query = 'DELETE FROM listetache WHERE id = :id';
             $this->con->executeQuery($query, array(
                 ':id' => array($id, PDO::PARAM_INT)));
         } catch (PDOException $e) {

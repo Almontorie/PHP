@@ -19,7 +19,7 @@ class UtilisateurGateway
 
     function read($pseudo, $mdp){
         try {
-            $query = 'SELECT * FROM Utilisateur WHERE pseudo = :pseudo and mdp = :mdp';
+            $query = 'SELECT * FROM utilisateur WHERE pseudo = :pseudo and mdp = :mdp';
             $this->con->executeQuery($query, array(
                 ':pseudo' => array($pseudo, PDO::PARAM_STR),
                 ':mdp' => array($mdp, PDO::PARAM_STR)));

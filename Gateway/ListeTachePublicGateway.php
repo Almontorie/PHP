@@ -20,7 +20,7 @@ class ListeTachePublicGateway
     function read()
     {
         try {
-            $query = 'SELECT * FROM ListeTachePublic';
+            $query = 'SELECT * FROM listetachepublic';
             $this->con->executeQuery($query);
             if ($this->con->getRowCount() == 0)
                 return NULL;
@@ -36,7 +36,7 @@ class ListeTachePublicGateway
 
     function add($nom){
         try {
-            $query = 'INSERT INTO ListeTachePublic (nom) VALUES (:nom)';
+            $query = 'INSERT INTO listetachepublic (nom) VALUES (:nom)';
             $this->con->executeQuery($query, array(
                 ':nom' => array($nom, PDO::PARAM_STR)));
         } catch (PDOException $e) {
@@ -46,7 +46,7 @@ class ListeTachePublicGateway
 
     public function delete($id){
         try {
-            $query = 'DELETE FROM ListeTachePublic WHERE id = :id';
+            $query = 'DELETE FROM listetachepublic WHERE id = :id';
             $this->con->executeQuery($query, array(
                 ':id' => array($id, PDO::PARAM_INT)));
         } catch (PDOException $e) {

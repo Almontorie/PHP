@@ -44,8 +44,8 @@ class UtilisateurController
     private function connexion() {
         try {
             $dsn = "mysql:host=localhost;dbname=dbalmontorie";
-            $user = "root";
-            $passwd = "";
+            $user = "almontorie";
+            $passwd = "nulmitroglou";
             return new ConnexionDB($dsn, $user, $passwd);
         }
         catch (PDOException $e){

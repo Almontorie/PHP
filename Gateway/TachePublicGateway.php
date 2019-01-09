@@ -27,7 +27,7 @@ class TachePublicGateway
 
     function add($nom,$idListeTache){
         try {
-            $query = 'INSERT into TachePublic values(:des,:id)';
+            $query = 'INSERT into tachepublic values(:des,:id)';
             $this->con->executeQuery($query, array(
                 ':des' => array($nom, PDO::PARAM_STR),
                 ':id' => array($idListeTache, PdO::PARAM_INT)));
@@ -40,7 +40,7 @@ class TachePublicGateway
     function read($idListeTache){
         try {
             $tabTache = [];
-            $query = 'SELECT * FROM TachePublic WHERE idListeTache = :id';
+            $query = 'SELECT * FROM tachepublic WHERE idListeTache = :id';
             $this->con->executeQuery($query, array(
                 ':id' => array($idListeTache, PDO::PARAM_STR)));
             $result = $this->con->getResults();
@@ -55,7 +55,7 @@ class TachePublicGateway
 
     function delete($nom,$idListeTache){
         try {
-            $query = 'DELETE FROM TachePublic WHERE idListeTache = :idListeTache and nom = :nom';
+            $query = 'DELETE FROM tachepublic WHERE idListeTache = :idListeTache and nom = :nom';
             $this->con->executeQuery($query, array(
                 ':idListeTache' => array($idListeTache, PDO::PARAM_INT),
                 ':nom' => array($nom, PDO::PARAM_STR)));
@@ -66,7 +66,7 @@ class TachePublicGateway
 
     function deleteAll($idListeTache){
         try{
-            $query = 'DELETE FROM TachePublic WHERE idListeTache = :id';
+            $query = 'DELETE FROM tachepublic WHERE idListeTache = :id';
             $this->con->executeQuery($query, array(
                 ':id' => array($idListeTache, PDO::PARAM_INT)));
         } catch (PDOException $e){
