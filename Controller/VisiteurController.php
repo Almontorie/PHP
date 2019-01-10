@@ -79,4 +79,10 @@ class VisiteurController
         return true;
     }
 
+    public function completerTache($nom,$idListeTache){
+        $con = $this->connexion();
+        $modele = new TachePublicModele($con);
+        $modele->completeTask($nom,$idListeTache);
+    }
+
 }

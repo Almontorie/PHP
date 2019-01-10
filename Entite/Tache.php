@@ -16,10 +16,10 @@ class Tache
      * Tache constructor.
      * @param $nom
      */
-    public function __construct($nom)
+    public function __construct($nom,$complete)
     {
         $this->nom = $nom;
-        $this->complete = false;
+        $this->complete = $complete;
     }
 
     /**

@@ -3,6 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="e20317e8-fb5b-4bd7-96cc-c2234cdf202f" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Controller/VisiteurController.php" beforeDir="false" afterPath="$PROJECT_DIR$/Controller/VisiteurController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Entite/Tache.php" beforeDir="false" afterPath="$PROJECT_DIR$/Entite/Tache.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Gateway/TachePublicGateway.php" beforeDir="false" afterPath="$PROJECT_DIR$/Gateway/TachePublicGateway.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Modele/TachePublicModele.php" beforeDir="false" afterPath="$PROJECT_DIR$/Modele/TachePublicModele.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Vue/VueAccueil.php" beforeDir="false" afterPath="$PROJECT_DIR$/Vue/VueAccueil.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -13,11 +17,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Vue/VueAccueil.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="221">
-              <caret line="62" column="58" lean-forward="true" selection-start-line="62" selection-start-column="58" selection-end-line="62" selection-end-column="58" />
+            <state relative-caret-position="964">
+              <caret line="106" selection-start-line="106" selection-end-line="106" />
             </state>
           </provider>
         </entry>
@@ -25,15 +29,44 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Entite/Tache.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-85" />
+            <state relative-caret-position="221">
+              <caret line="18" column="46" selection-start-line="18" selection-start-column="46" selection-end-line="18" selection-end-column="46" />
+            </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Entite/ListeTache.php">
+        <entry file="file://$PROJECT_DIR$/Controller/VisiteurController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="544">
-              <caret line="59" lean-forward="true" selection-start-line="59" selection-end-line="59" />
+            <state relative-caret-position="476">
+              <caret line="81" column="36" selection-start-line="81" selection-start-column="36" selection-end-line="81" selection-end-column="36" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Modele/TachePublicModele.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="726">
+              <caret line="49" column="62" selection-start-line="49" selection-start-column="62" selection-end-line="49" selection-end-column="62" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Gateway/TachePublicGateway.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-141">
+              <caret line="29" column="67" selection-start-line="29" selection-start-column="67" selection-end-line="29" selection-end-column="67" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Vue/VueCreationTachePublic.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="460">
+              <caret line="34" column="25" selection-start-line="34" selection-start-column="25" selection-end-line="34" selection-end-column="25" />
             </state>
           </provider>
         </entry>
@@ -52,22 +85,23 @@
         <option value="$PROJECT_DIR$/Vue/VueCreationTache.php" />
         <option value="$PROJECT_DIR$/Modele/ListeTachePublicModele.php" />
         <option value="$PROJECT_DIR$/Modele/ListeTacheModele.php" />
-        <option value="$PROJECT_DIR$/Modele/TachePublicModele.php" />
         <option value="$PROJECT_DIR$/Modele/TacheModele.php" />
         <option value="$PROJECT_DIR$/Gateway/TacheGateway.php" />
         <option value="$PROJECT_DIR$/Gateway/ListeTacheGateway.php" />
         <option value="$PROJECT_DIR$/Gateway/ListeTachePublicGateway.php" />
-        <option value="$PROJECT_DIR$/Gateway/TachePublicGateway.php" />
-        <option value="$PROJECT_DIR$/Vue/VueCreationTachePublic.php" />
         <option value="$PROJECT_DIR$/Vue/VueCreationListePublic.php" />
         <option value="$PROJECT_DIR$/Vue/VueCreationListe.php" />
         <option value="$PROJECT_DIR$/Vue/VueListeTache.php" />
-        <option value="$PROJECT_DIR$/Controller/VisiteurController.php" />
         <option value="$PROJECT_DIR$/Modele/UtilisateurModele.php" />
         <option value="$PROJECT_DIR$/Controller/UtilisateurController.php" />
         <option value="$PROJECT_DIR$/Vue/VueConnexion.php" />
         <option value="$PROJECT_DIR$/Vue/VueInscription.php" />
         <option value="$PROJECT_DIR$/Gateway/UtilisateurGateway.php" />
+        <option value="$PROJECT_DIR$/Modele/TachePublicModele.php" />
+        <option value="$PROJECT_DIR$/Controller/VisiteurController.php" />
+        <option value="$PROJECT_DIR$/Entite/Tache.php" />
+        <option value="$PROJECT_DIR$/Gateway/TachePublicGateway.php" />
+        <option value="$PROJECT_DIR$/Vue/VueCreationTachePublic.php" />
         <option value="$PROJECT_DIR$/Vue/VueAccueil.php" />
       </list>
     </option>
@@ -169,16 +203,17 @@
       <workItem from="1547058503072" duration="3354000" />
       <workItem from="1547070475737" duration="140000" />
       <workItem from="1547072900014" duration="3888000" />
+      <workItem from="1547114907995" duration="2827000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="40136000" />
+    <option name="totallyTimeSpent" value="42963000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.110738255" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.11208054" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -232,11 +267,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Modele/TachePublicModele.php" />
     <entry file="file://$PROJECT_DIR$/Modele/TacheModele.php" />
-    <entry file="file://$PROJECT_DIR$/Gateway/ConnexionDB.php">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/Gateway/ListeTachePublicGateway.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="645">
@@ -244,24 +275,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Gateway/TachePublicGateway.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="819">
-          <caret line="68" column="45" selection-start-line="68" selection-start-column="45" selection-end-line="68" selection-end-column="45" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Gateway/TacheGateway.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="804">
           <caret line="68" column="39" selection-start-line="68" selection-start-column="39" selection-end-line="68" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Vue/VueCreationTachePublic.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="540">
-          <caret line="41" lean-forward="true" selection-start-line="41" selection-end-line="41" />
         </state>
       </provider>
     </entry>
@@ -293,13 +310,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="647">
           <caret line="50" column="44" selection-start-line="50" selection-start-column="44" selection-end-line="50" selection-end-column="44" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Controller/VisiteurController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="347">
-          <caret line="28" column="23" selection-start-line="28" selection-start-column="23" selection-end-line="28" selection-end-column="23" />
         </state>
       </provider>
     </entry>
@@ -347,20 +357,53 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Entite/ListeTache.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="544">
-          <caret line="59" lean-forward="true" selection-start-line="59" selection-end-line="59" />
+        <state relative-caret-position="918">
+          <caret line="59" selection-start-line="59" selection-end-line="59" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Entite/Tache.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-85" />
+        <state relative-caret-position="221">
+          <caret line="18" column="46" selection-start-line="18" selection-start-column="46" selection-end-line="18" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Gateway/ConnexionDB.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Controller/VisiteurController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="476">
+          <caret line="81" column="36" selection-start-line="81" selection-start-column="36" selection-end-line="81" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Modele/TachePublicModele.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="726">
+          <caret line="49" column="62" selection-start-line="49" selection-start-column="62" selection-end-line="49" selection-end-column="62" />
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Vue/VueAccueil.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="62" column="58" lean-forward="true" selection-start-line="62" selection-start-column="58" selection-end-line="62" selection-end-column="58" />
+        <state relative-caret-position="964">
+          <caret line="106" selection-start-line="106" selection-end-line="106" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Vue/VueCreationTachePublic.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="460">
+          <caret line="34" column="25" selection-start-line="34" selection-start-column="25" selection-end-line="34" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Gateway/TachePublicGateway.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-141">
+          <caret line="29" column="67" selection-start-line="29" selection-start-column="67" selection-end-line="29" selection-end-column="67" />
         </state>
       </provider>
     </entry>

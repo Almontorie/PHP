@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  mer. 09 jan. 2019 à 19:39
+-- Généré le :  jeu. 10 jan. 2019 à 10:56
 -- Version du serveur :  5.7.19
 -- Version de PHP :  5.6.31
 
@@ -56,7 +56,7 @@ CREATE TABLE IF NOT EXISTS `listetachepublic` (
   `nom` varchar(100) NOT NULL,
   `id` int(11) NOT NULL AUTO_INCREMENT,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=64 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=65 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `listetachepublic`
@@ -64,7 +64,7 @@ CREATE TABLE IF NOT EXISTS `listetachepublic` (
 
 INSERT INTO `listetachepublic` (`nom`, `id`) VALUES
 ('mardi', 61),
-('ffez', 56);
+('mardi', 64);
 
 -- --------------------------------------------------------
 
@@ -97,6 +97,7 @@ DROP TABLE IF EXISTS `tachepublic`;
 CREATE TABLE IF NOT EXISTS `tachepublic` (
   `nom` varchar(200) NOT NULL,
   `idListeTache` int(11) NOT NULL,
+  `complete` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`nom`,`idListeTache`),
   KEY `idListeTachePublic` (`idListeTache`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
@@ -105,11 +106,13 @@ CREATE TABLE IF NOT EXISTS `tachepublic` (
 -- Déchargement des données de la table `tachepublic`
 --
 
-INSERT INTO `tachepublic` (`nom`, `idListeTache`) VALUES
-('ca', 56),
-('ca', 61),
-('ffez', 61),
-('snv', 61);
+INSERT INTO `tachepublic` (`nom`, `idListeTache`, `complete`) VALUES
+('yn', 64, 1),
+('ffez', 61, 1),
+('snv', 61, 1),
+('ca', 61, 1),
+('ca', 64, 0),
+('ffez', 64, 1);
 
 -- --------------------------------------------------------
 

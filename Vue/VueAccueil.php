@@ -65,15 +65,13 @@ try {
 
     if(isset($_POST['checkbox'])){
         echo "<br/>";
-        foreach ($_POST['checkbox'] as $tache){
-            $index = explode(" ",$tache);
-            $list = $tab[$index[1]]->getListTache();
-            $list[$index[0]]->setComplete(true);
+        foreach ($_POST['checkbox'] as $strTache){
+            $tache = explode(" ",$strTache);
+            $user->completerTache($tache[0],$tache[1]);
             echo "<br/>";
         }
         echo "<br/>";
-        affichTab($tab);
-        //header("Location: VueAccueil.php");
+        header("Location: VueAccueil.php");
     }
 
 
@@ -84,7 +82,6 @@ try {
 <?php
 
 function affichTab($tab){
-    $indexList = 0;
     foreach ($tab as $item) {
         echo $item->getNom();
         ?>
@@ -92,7 +89,6 @@ function affichTab($tab){
         <button type="submit" name="idToDelete" value="<?php echo $item->getId() ?>">Supprimer</button>
         <?php
         echo "<br/>";
-        $indexTask = 0;
         foreach ($item->getListTache() as $tache) {
             if($tache->isComplete()) {
                 ?>
@@ -103,13 +99,11 @@ function affichTab($tab){
                 echo " - " . $tache->getNom();
             }
             ?>
-            <input type="checkbox" name="checkbox[]" value="<?php echo $indexTask." ".$indexList ?>"/>
+            <input type="checkbox" name="checkbox[]" value="<?php echo $tache->getNom()." ".$item->getId() ?>"/>
             <?php
             echo "<br/>";
-            $indexTask++;
         }
         echo "<br/>";
-        $indexList++;
     }
 }
 

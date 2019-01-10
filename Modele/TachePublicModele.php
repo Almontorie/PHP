@@ -45,4 +45,9 @@ class TachePublicModele
         }
     }
 
+    public function completeTask($nom,$idListeTache){
+        $tachePublicGateway = new TachePublicGateway($this->con);
+        $tachePublicGateway->completeTask($nom,$idListeTache);
+    }
+
 }
