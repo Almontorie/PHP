@@ -17,7 +17,7 @@ $POST['id'] = $_SESSION['id'];
 ?>
 
 <FORM METHOD="post">
-    Nom de la liste : <INPUT TYPE=text name="nom"> (200 caractères maximum et caractère '|' interdit)
+    Nom de la tâche : <INPUT TYPE=text name="nom"> (200 caractères maximum et caractère '|' interdit)
     <P>
         <INPUT TYPE=SUBMIT NAME="valid" VALUE="Valider">
     </P>

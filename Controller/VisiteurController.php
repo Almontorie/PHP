@@ -28,6 +28,9 @@ class VisiteurController
         $result = $modele->load();
 
         $modeleTache = new TachePublicModele();
+        if($result == null){
+            return null;
+        }
         foreach ($result as $listTache){
             $list = $modeleTache->read($listTache->getId());
             $listTache->setListTache($list);

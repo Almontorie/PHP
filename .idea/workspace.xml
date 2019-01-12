@@ -2,20 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e20317e8-fb5b-4bd7-96cc-c2234cdf202f" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Gateway/Gateway.php" beforeDir="false" afterPath="$PROJECT_DIR$/Gateway/Gateway.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TacheController.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Validation.php" beforeDir="false" afterPath="$PROJECT_DIR$/Validation.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Controller/VisiteurController.php" beforeDir="false" afterPath="$PROJECT_DIR$/Controller/VisiteurController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Vue/VueAccueil.php" beforeDir="false" afterPath="$PROJECT_DIR$/Vue/VueAccueil.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Vue/VueCreationListe.php" beforeDir="false" afterPath="$PROJECT_DIR$/Vue/VueCreationListe.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Vue/VueCreationListePublic.php" beforeDir="false" afterPath="$PROJECT_DIR$/Vue/VueCreationListePublic.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Vue/VueCreationTache.php" beforeDir="false" afterPath="$PROJECT_DIR$/Vue/VueCreationTache.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Vue/VueCreationTachePublic.php" beforeDir="false" afterPath="$PROJECT_DIR$/Vue/VueCreationTachePublic.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Vue/VueListeTache.php" beforeDir="false" afterPath="$PROJECT_DIR$/Vue/VueListeTache.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllerDB.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/insertionTache.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vue.php" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -25,20 +14,29 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Vue/VueAccueil.php">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Controller/VisiteurController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="556">
-              <caret line="143" column="1" selection-start-line="143" selection-start-column="1" selection-end-line="143" selection-end-column="1" />
+            <state relative-caret-position="116">
+              <caret line="31" column="24" selection-start-line="31" selection-start-column="24" selection-end-line="31" selection-end-column="24" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Vue/VueListeTache.php">
+        <entry file="file://$PROJECT_DIR$/Controller/UtilisateurController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-566">
-              <caret line="49" column="31" selection-start-line="49" selection-start-column="31" selection-end-line="49" selection-end-column="31" />
+            <state relative-caret-position="-502">
+              <caret line="42" selection-start-line="42" selection-end-line="42" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Vue/VueCreationTache.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="238">
+              <caret line="19" column="19" selection-start-line="19" selection-start-column="19" selection-end-line="19" selection-end-column="19" />
             </state>
           </provider>
         </entry>
@@ -69,14 +67,14 @@
         <option value="$PROJECT_DIR$/Vue/VueConnexion.php" />
         <option value="$PROJECT_DIR$/Gateway/Gateway.php" />
         <option value="$PROJECT_DIR$/index.php" />
-        <option value="$PROJECT_DIR$/Controller/VisiteurController.php" />
         <option value="$PROJECT_DIR$/Vue/VueListeTache.php" />
         <option value="$PROJECT_DIR$/Validation.php" />
         <option value="$PROJECT_DIR$/Vue/VueCreationListePublic.php" />
         <option value="$PROJECT_DIR$/Vue/VueCreationListe.php" />
-        <option value="$PROJECT_DIR$/Vue/VueCreationTache.php" />
         <option value="$PROJECT_DIR$/Vue/VueCreationTachePublic.php" />
+        <option value="$PROJECT_DIR$/Controller/VisiteurController.php" />
         <option value="$PROJECT_DIR$/Vue/VueAccueil.php" />
+        <option value="$PROJECT_DIR$/Vue/VueCreationTache.php" />
       </list>
     </option>
   </component>
@@ -182,16 +180,17 @@
       <workItem from="1547276888600" duration="6506000" />
       <workItem from="1547289817442" duration="20000" />
       <workItem from="1547289859488" duration="1788000" />
+      <workItem from="1547313430937" duration="775000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="51284000" />
+    <option name="totallyTimeSpent" value="52059000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.1147651" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.11567164" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -211,6 +210,27 @@
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="Database" order="3" />
     </layout>
+    <layout-to-restore>
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.11567164" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.3286119" />
+      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Database Changes" order="8" />
+      <window_info anchor="bottom" id="Version Control" order="9" />
+      <window_info anchor="bottom" id="Terminal" order="10" weight="0.3286119" />
+      <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Database" order="3" />
+    </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
@@ -318,24 +338,10 @@
     <entry file="file://$PROJECT_DIR$/Vue/VueInscription.php">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/Controller/UtilisateurController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="624">
-          <caret line="42" selection-start-line="42" selection-end-line="42" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Gateway/Gateway.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="272">
           <caret line="21" column="23" selection-start-line="21" selection-start-column="23" selection-end-line="21" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/index.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="8" column="24" selection-start-line="8" selection-start-column="24" selection-end-line="8" selection-end-column="24" />
         </state>
       </provider>
     </entry>
@@ -360,13 +366,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Vue/VueCreationTache.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="402">
-          <caret line="33" column="88" selection-start-line="33" selection-start-column="88" selection-end-line="33" selection-end-column="88" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Vue/VueCreationTachePublic.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="394">
@@ -374,40 +373,49 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Controller/VisiteurController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="505">
-          <caret line="66" column="55" selection-start-line="66" selection-start-column="55" selection-end-line="66" selection-end-column="55" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/insertionTache.php">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/TacheController.php">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/controllerDB.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="17" column="21" lean-forward="true" selection-start-line="17" selection-start-column="21" selection-end-line="17" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vue.php">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
+    <entry file="file://$PROJECT_DIR$/insertionTache.php" />
+    <entry file="file://$PROJECT_DIR$/TacheController.php" />
+    <entry file="file://$PROJECT_DIR$/controllerDB.php" />
+    <entry file="file://$PROJECT_DIR$/vue.php" />
     <entry file="file://$PROJECT_DIR$/Vue/VueListeTache.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-566">
+        <state relative-caret-position="748">
           <caret line="49" column="31" selection-start-line="49" selection-start-column="31" selection-end-line="49" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="8" column="24" selection-start-line="8" selection-start-column="24" selection-end-line="8" selection-end-column="24" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Vue/VueAccueil.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="556">
-          <caret line="143" column="1" selection-start-line="143" selection-start-column="1" selection-end-line="143" selection-end-column="1" />
+        <state relative-caret-position="221">
+          <caret line="78" column="46" selection-start-line="78" selection-start-column="46" selection-end-line="78" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Controller/VisiteurController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="116">
+          <caret line="31" column="24" selection-start-line="31" selection-start-column="24" selection-end-line="31" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Controller/UtilisateurController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-502">
+          <caret line="42" selection-start-line="42" selection-end-line="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Vue/VueCreationTache.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="19" column="19" selection-start-line="19" selection-start-column="19" selection-end-line="19" selection-end-column="19" />
         </state>
       </provider>
     </entry>

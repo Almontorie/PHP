@@ -75,6 +75,10 @@ try {
 <?php
 
 function affichTab($tab){
+    if($tab == null){
+        echo "Pas de tâche publique <br/><br/>";
+        return;
+    }
     foreach ($tab as $item) {
         echo $item->getNom();
         ?>
