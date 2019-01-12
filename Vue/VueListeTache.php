@@ -110,4 +110,6 @@ function isConnected(){
 
 
 <button onclick="window.location.href='VueCreationListe.php'">Ajouter une liste de tâche</button>
+<br/>
+<br/>
 <button onclick="window.location.href='VueAccueil.php'">Accueil</button>

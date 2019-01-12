@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Client :  localhost:3306
--- Généré le :  Sam 12 Janvier 2019 à 08:41
+-- Généré le :  Sam 12 Janvier 2019 à 09:55
 -- Version du serveur :  10.1.37-MariaDB-0+deb9u1
 -- Version de PHP :  7.0.33-0+deb9u1
 
@@ -40,7 +40,7 @@ INSERT INTO `listetache` (`id`, `nom`, `pseudo`) VALUES
 (28, 'ffez', 'Alexis Bouvard'),
 (25, 'lundi', 'Alexis Bouvard'),
 (32, 'test', 'lutorret'),
-(34, 'mardi', 'lutorret');
+(35, 'lundi', 'almontorie');
 
 -- --------------------------------------------------------
 
@@ -58,8 +58,8 @@ CREATE TABLE `listetachepublic` (
 --
 
 INSERT INTO `listetachepublic` (`nom`, `id`) VALUES
-('mardi', 61),
-('mardi', 65);
+('mardi', 65),
+('ca', 69);
 
 -- --------------------------------------------------------
 
@@ -78,9 +78,10 @@ CREATE TABLE `tache` (
 --
 
 INSERT INTO `tache` (`nom`, `idListeTache`, `complete`) VALUES
-('ca', 34, 0),
-('test3', 34, 0),
-('test2', 32, 0);
+('test2', 32, 0),
+('ca', 32, 1),
+('test', 35, 1),
+('test2', 35, 1);
 
 -- --------------------------------------------------------
 
@@ -99,12 +100,14 @@ CREATE TABLE `tachepublic` (
 --
 
 INSERT INTO `tachepublic` (`nom`, `idListeTache`, `complete`) VALUES
-('ffez', 61, 1),
-('snv', 61, 1),
-('ca', 61, 1),
-('test', 61, 1),
+('et', 65, 1),
+('tyejyujyruj', 69, 1),
+('egerherh', 69, 1),
+('et ca', 69, 0),
 ('test', 65, 1),
-('ca', 65, 0);
+('ca', 65, 1),
+('fdb dfbgb', 69, 0),
+('mard ca et ca', 69, 0);
 
 -- --------------------------------------------------------
 
@@ -123,7 +126,8 @@ CREATE TABLE `utilisateur` (
 
 INSERT INTO `utilisateur` (`pseudo`, `mdp`) VALUES
 ('Alexis Bouvard', '$2y$10$Nibnnmf6SxxSifSwaK8yWeo/P8oPiFNHtY2a2P09Lg/zG5.m1H/vS'),
-('lutorret', '$2y$10$UTyYN/bG6wDvGnLQ66FkjuIPhdzE8Tgw0p60JnvLAqT3BY.nbzXYK');
+('lutorret', '$2y$10$UTyYN/bG6wDvGnLQ66FkjuIPhdzE8Tgw0p60JnvLAqT3BY.nbzXYK'),
+('almontorie', '$2y$10$TyVn1VLQ19WDiNuCCQjqxuxomkv0S.fksgBQvsWuwIg0hZHpkBZGm');
 
 --
 -- Index pour les tables exportées
@@ -170,12 +174,12 @@ ALTER TABLE `utilisateur`
 -- AUTO_INCREMENT pour la table `listetache`
 --
 ALTER TABLE `listetache`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 --
 -- AUTO_INCREMENT pour la table `listetachepublic`
 --
 ALTER TABLE `listetachepublic`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=66;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=70;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

@@ -11,9 +11,6 @@ require_once ("../Validation.php");
 
 session_start();
 
-//visibilité
-//session_destroy()
-//connexion dans classe mere gateway
 
 ?>
 <form method="post">
@@ -43,10 +40,7 @@ try {
     }
 
     if(isset($_POST['connexion'])) {
-        if(isConnected())
-            echo "<br/> Vous êtes déjà connecté";
-        else
-            header("Location: VueConnexion.php");
+        header("Location: VueConnexion.php");
     }
 
     if(isset($_POST['deconnexion'])) {
@@ -118,11 +112,24 @@ function isConnected(){
     <input type="submit" name="completerTache" value="Valider les tâches" />
     <br/>
     <br/>
-    <button type="submit" name="listetache">Voir mes listes de tâches</button>
-    <br/>
-    <br/>
-    <button type="submit" name="connexion">Connexion</button>
-    <button type="submit" name="deconnexion">Deconnexion</button>
+
+
+    <?php
+        if(!isConnected()) {
+            ?>
+            <button type="submit" name="connexion">Connexion</button>
+
+            <?php
+        }
+        else {
+            ?>
+            <button type="submit" name="listetache">Voir mes listes de tâches</button>
+            <br/>
+            <br/>
+            <button type="submit" name="deconnexion">Deconnexion</button>
+            <?php
+        }
+    ?>
 
 </form>
 

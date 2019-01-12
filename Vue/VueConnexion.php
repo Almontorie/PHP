@@ -34,7 +34,7 @@ try {
         $user = new UtilisateurController();
         $result = $user->connexionUtilisateur($_POST);
         if(!$result) {
-            echo "Connexion echouée";
+            echo "Mot de passe incorrect";
         }
         else {
             $_SESSION['pseudo'] = $_POST['pseudo'];
