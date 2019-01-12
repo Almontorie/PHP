@@ -1,15 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.4
+-- version 4.6.6deb4
 -- https://www.phpmyadmin.net/
 --
--- Hôte : 127.0.0.1:3306
--- Généré le :  jeu. 10 jan. 2019 à 10:56
--- Version du serveur :  5.7.19
--- Version de PHP :  5.6.31
+-- Client :  localhost:3306
+-- Généré le :  Sam 12 Janvier 2019 à 08:41
+-- Version du serveur :  10.1.37-MariaDB-0+deb9u1
+-- Version de PHP :  7.0.33-0+deb9u1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
-START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -28,22 +26,21 @@ SET time_zone = "+00:00";
 -- Structure de la table `listetache`
 --
 
-DROP TABLE IF EXISTS `listetache`;
-CREATE TABLE IF NOT EXISTS `listetache` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `listetache` (
+  `id` int(11) NOT NULL,
   `nom` varchar(100) NOT NULL,
-  `pseudo` varchar(50) NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `pseudo` (`pseudo`)
-) ENGINE=MyISAM AUTO_INCREMENT=31 DEFAULT CHARSET=latin1;
+  `pseudo` varchar(50) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
--- Déchargement des données de la table `listetache`
+-- Contenu de la table `listetache`
 --
 
 INSERT INTO `listetache` (`id`, `nom`, `pseudo`) VALUES
 (28, 'ffez', 'Alexis Bouvard'),
-(25, 'lundi', 'Alexis Bouvard');
+(25, 'lundi', 'Alexis Bouvard'),
+(32, 'test', 'lutorret'),
+(34, 'mardi', 'lutorret');
 
 -- --------------------------------------------------------
 
@@ -51,20 +48,18 @@ INSERT INTO `listetache` (`id`, `nom`, `pseudo`) VALUES
 -- Structure de la table `listetachepublic`
 --
 
-DROP TABLE IF EXISTS `listetachepublic`;
-CREATE TABLE IF NOT EXISTS `listetachepublic` (
+CREATE TABLE `listetachepublic` (
   `nom` varchar(100) NOT NULL,
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=65 DEFAULT CHARSET=latin1;
+  `id` int(11) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
--- Déchargement des données de la table `listetachepublic`
+-- Contenu de la table `listetachepublic`
 --
 
 INSERT INTO `listetachepublic` (`nom`, `id`) VALUES
 ('mardi', 61),
-('mardi', 64);
+('mardi', 65);
 
 -- --------------------------------------------------------
 
@@ -72,20 +67,20 @@ INSERT INTO `listetachepublic` (`nom`, `id`) VALUES
 -- Structure de la table `tache`
 --
 
-DROP TABLE IF EXISTS `tache`;
-CREATE TABLE IF NOT EXISTS `tache` (
+CREATE TABLE `tache` (
   `nom` varchar(200) NOT NULL,
   `idListeTache` int(11) NOT NULL,
-  PRIMARY KEY (`nom`,`idListeTache`),
-  KEY `idListeTache` (`idListeTache`)
+  `complete` tinyint(1) NOT NULL DEFAULT '0'
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
--- Déchargement des données de la table `tache`
+-- Contenu de la table `tache`
 --
 
-INSERT INTO `tache` (`nom`, `idListeTache`) VALUES
-('ca', 28);
+INSERT INTO `tache` (`nom`, `idListeTache`, `complete`) VALUES
+('ca', 34, 0),
+('test3', 34, 0),
+('test2', 32, 0);
 
 -- --------------------------------------------------------
 
@@ -93,26 +88,23 @@ INSERT INTO `tache` (`nom`, `idListeTache`) VALUES
 -- Structure de la table `tachepublic`
 --
 
-DROP TABLE IF EXISTS `tachepublic`;
-CREATE TABLE IF NOT EXISTS `tachepublic` (
+CREATE TABLE `tachepublic` (
   `nom` varchar(200) NOT NULL,
   `idListeTache` int(11) NOT NULL,
-  `complete` tinyint(1) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`nom`,`idListeTache`),
-  KEY `idListeTachePublic` (`idListeTache`)
+  `complete` tinyint(1) NOT NULL DEFAULT '0'
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
--- Déchargement des données de la table `tachepublic`
+-- Contenu de la table `tachepublic`
 --
 
 INSERT INTO `tachepublic` (`nom`, `idListeTache`, `complete`) VALUES
-('yn', 64, 1),
 ('ffez', 61, 1),
 ('snv', 61, 1),
 ('ca', 61, 1),
-('ca', 64, 0),
-('ffez', 64, 1);
+('test', 61, 1),
+('test', 65, 1),
+('ca', 65, 0);
 
 -- --------------------------------------------------------
 
@@ -120,22 +112,70 @@ INSERT INTO `tachepublic` (`nom`, `idListeTache`, `complete`) VALUES
 -- Structure de la table `utilisateur`
 --
 
-DROP TABLE IF EXISTS `utilisateur`;
-CREATE TABLE IF NOT EXISTS `utilisateur` (
+CREATE TABLE `utilisateur` (
   `pseudo` varchar(50) NOT NULL,
-  `mdp` varchar(100) NOT NULL,
-  PRIMARY KEY (`pseudo`)
+  `mdp` varchar(100) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
--- Déchargement des données de la table `utilisateur`
+-- Contenu de la table `utilisateur`
 --
 
 INSERT INTO `utilisateur` (`pseudo`, `mdp`) VALUES
 ('Alexis Bouvard', '$2y$10$Nibnnmf6SxxSifSwaK8yWeo/P8oPiFNHtY2a2P09Lg/zG5.m1H/vS'),
 ('lutorret', '$2y$10$UTyYN/bG6wDvGnLQ66FkjuIPhdzE8Tgw0p60JnvLAqT3BY.nbzXYK');
-COMMIT;
 
+--
+-- Index pour les tables exportées
+--
+
+--
+-- Index pour la table `listetache`
+--
+ALTER TABLE `listetache`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `pseudo` (`pseudo`);
+
+--
+-- Index pour la table `listetachepublic`
+--
+ALTER TABLE `listetachepublic`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Index pour la table `tache`
+--
+ALTER TABLE `tache`
+  ADD PRIMARY KEY (`nom`,`idListeTache`),
+  ADD KEY `idListeTache` (`idListeTache`);
+
+--
+-- Index pour la table `tachepublic`
+--
+ALTER TABLE `tachepublic`
+  ADD PRIMARY KEY (`nom`,`idListeTache`),
+  ADD KEY `idListeTachePublic` (`idListeTache`);
+
+--
+-- Index pour la table `utilisateur`
+--
+ALTER TABLE `utilisateur`
+  ADD PRIMARY KEY (`pseudo`);
+
+--
+-- AUTO_INCREMENT pour les tables exportées
+--
+
+--
+-- AUTO_INCREMENT pour la table `listetache`
+--
+ALTER TABLE `listetache`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+--
+-- AUTO_INCREMENT pour la table `listetachepublic`
+--
+ALTER TABLE `listetachepublic`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=66;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

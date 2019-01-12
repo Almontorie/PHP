@@ -10,6 +10,9 @@ require_once ("../Controller/UtilisateurController.php");
 
 session_start();
 
+if(!isConnected())
+    header ("Location: VueConnexion.php");
+
 ?>
 
 <FORM METHOD="post">
@@ -32,6 +35,12 @@ try {
     }
 } catch (PDOException $e) {
     echo $e->getMessage();
+}
+
+function isConnected(){
+    if(isset($_SESSION['pseudo']))
+        return true;
+    return false;
 }
 
 ?>

@@ -40,23 +40,9 @@ class UtilisateurController
     }
 
 
-
-    private function connexion() {
-        try {
-            $dsn = "mysql:host=localhost;dbname=dbalmontorie";
-            $user = "root";
-            $passwd = "";
-            return new ConnexionDB($dsn, $user, $passwd);
-        }
-        catch (PDOException $e){
-            throw $e;
-        }
-    }
-
     public function connexionUtilisateur($POST){
         try {
-            $con = $this->connexion();
-            $modele = new UtilisateurModele($con);
+            $modele = new UtilisateurModele();
 
             $POST['pseudo'] = $this->validation->validInput($POST['pseudo']);
             $POST['mdp'] = $this->validation->validInput($POST['mdp']);
@@ -72,8 +58,7 @@ class UtilisateurController
     }
 
     public function inscriptionUtilisateur($POST){
-        $con=$this->connexion();
-        $modele = new UtilisateurModele($con);
+        $modele = new UtilisateurModele();
 
         $POST['pseudo'] = $this->validation->validInput($POST['pseudo']);
         $POST['mdp'] = $this->validation->validInput($POST['mdp']);
@@ -81,11 +66,10 @@ class UtilisateurController
     }
 
     public function chargementTabListTache(){
-        $con=$this->connexion();
-        $modele = new ListeTacheModele($con);
+        $modele = new ListeTacheModele();
         $result = $modele->load($this->utilisateur->getPseudo());
 
-        $modeleTache = new TacheModele($con);
+        $modeleTache = new TacheModele();
         if($result != null) {
             foreach ($result as $listTache) {
                 $list = $modeleTache->read($listTache->getId());
@@ -102,18 +86,16 @@ class UtilisateurController
         if (! $this->validation->validListLength($POST['nom']))
             return false;
 
-        $con=$this->connexion();
-        $modele = new ListeTacheModele($con);
+        $modele = new ListeTacheModele();
         $modele->add($this->utilisateur->getPseudo(),$POST['nom']);
         return true;
     }
 
     public function supprimerListeTache($POST){
-        $con=$this->connexion();
-        $modele = new ListeTacheModele($con);
+        $modele = new ListeTacheModele();
         $modele->delete($POST['idToDelete']);
 
-        $modeleTache = new TacheModele($con);
+        $modeleTache = new TacheModele();
         $modeleTache->deleteAll($POST['idToDelete']);
     }
 
@@ -122,10 +104,15 @@ class UtilisateurController
         if (! $this->validation->validTaskLength($POST['nom']))
             return false;
 
-        $con = $this->connexion();
-        $modele = new TacheModele($con);
+        $modele = new TacheModele();
         $modele->add($POST['nom'],$POST['id']);
         return true;
     }
+
+    public function completerTache($nom,$idListeTache){
+        $modele = new TacheModele();
+        $modele->completeTask($nom,$idListeTache);
+    }
+
 
 }

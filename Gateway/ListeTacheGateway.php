@@ -6,25 +6,25 @@
  * Time: 07:30
  */
 require_once("ConnexionDB.php");
+require_once ("Gateway.php");
 
-class ListeTacheGateway
+
+class ListeTacheGateway extends Gateway
 {
-    private $con;
-
-    public function __construct(ConnexionDB $con)
+    public function __construct()
     {
-        $this->con = $con;
+        parent::__construct();
     }
 
     function read($pseudo)
     {
         try {
             $query = 'SELECT * FROM listetache WHERE pseudo = :pseudo';
-            $this->con->executeQuery($query, array(
+            $this->connexion->executeQuery($query, array(
                 ':pseudo' => array($pseudo, PDO::PARAM_STR)));
-            if ($this->con->getRowCount() == 0)
+            if ($this->connexion->getRowCount() == 0)
                 return NULL;
-            $result = $this->con->getResults();
+            $result = $this->connexion->getResults();
 
             foreach ($result as $row){
                 $tabListTache[] = new ListeTache($row['nom'],true,$row['id']);
@@ -38,7 +38,7 @@ class ListeTacheGateway
     function add($pseudo, $nom){
         try {
             $query = 'INSERT INTO listetache (nom, pseudo) VALUES (:nom, :pseudo)';
-            $this->con->executeQuery($query, array(
+            $this->connexion->executeQuery($query, array(
                 ':nom' => array($nom, PDO::PARAM_STR),
                 ':pseudo' => array($pseudo, PDO::PARAM_STR)));
         } catch (PDOException $e) {
@@ -49,7 +49,7 @@ class ListeTacheGateway
     public function delete($id){
         try {
             $query = 'DELETE FROM listetache WHERE id = :id';
-            $this->con->executeQuery($query, array(
+            $this->connexion->executeQuery($query, array(
                 ':id' => array($id, PDO::PARAM_INT)));
         } catch (PDOException $e) {
             throw $e;

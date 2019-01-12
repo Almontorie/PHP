@@ -11,16 +11,14 @@ require_once ("../Entite/Utilisateur.php");
 
 class UtilisateurModele
 {
-    private $con;
 
-    public function __construct($con)
+    public function __construct()
     {
-        $this->con = $con;
     }
 
     public function find($pseudo, $mdp){
         try {
-            $utilisateurGateway = new UtilisateurGateway($this->con);
+            $utilisateurGateway = new UtilisateurGateway();
             $utilisateur = $utilisateurGateway->read($pseudo, $mdp);
             return $utilisateur;
         }
@@ -31,7 +29,7 @@ class UtilisateurModele
 
     public function create($pseudo,$mdp){
         try{
-            $utilisateurGateway = new UtilisateurGateway($this->con);
+            $utilisateurGateway = new UtilisateurGateway();
             $result = $utilisateurGateway->add($pseudo,$mdp);
             return $result;
         }

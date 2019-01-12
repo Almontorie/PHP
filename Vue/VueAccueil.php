@@ -11,11 +11,9 @@ require_once ("../Validation.php");
 
 session_start();
 
-/*
-pour supprimer tache avec checkbox : début : checkbox value = index de la tache dans sa liste de taches (faire compteur dans foreach qui affiche les taches)
-mettre champ complete dans la bdd car recharger la page annule le setComplete(true);
- */
-
+//visibilité
+//session_destroy()
+//connexion dans classe mere gateway
 
 ?>
 <form method="post">
@@ -52,7 +50,8 @@ try {
     }
 
     if(isset($_POST['deconnexion'])) {
-        $_SESSION['pseudo'] = null;
+        session_unset();
+        session_destroy();
         header("Location: VueAccueil.php");
     }
 
@@ -63,7 +62,7 @@ try {
             echo "Vous devez tout d'abord vous connecter";
     }
 
-    if(isset($_POST['checkbox'])){
+    if(isset($_POST['completerTache'])){
         echo "<br/>";
         foreach ($_POST['checkbox'] as $strTache){
             $tache = explode(" ",$strTache);
@@ -91,8 +90,9 @@ function affichTab($tab){
         echo "<br/>";
         foreach ($item->getListTache() as $tache) {
             if($tache->isComplete()) {
+                echo " - ";
                 ?>
-                <s><?php echo " - ".$tache->getNom()?></s>
+                <s><?php echo $tache->getNom()?></s>
                 <?php
             }
             else {
@@ -108,14 +108,14 @@ function affichTab($tab){
 }
 
 function isConnected(){
-    if(isset($_SESSION['pseudo']) and $_SESSION['pseudo'] != null)
+    if(isset($_SESSION['pseudo']))
         return true;
     return false;
 }
 
 ?>
 
-    <input type="submit" value="Valider les tâches" />
+    <input type="submit" name="completerTache" value="Valider les tâches" />
     <br/>
     <br/>
     <button type="submit" name="listetache">Voir mes listes de tâches</button>

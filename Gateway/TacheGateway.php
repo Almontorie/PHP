@@ -8,27 +8,22 @@
 
 require_once("ConnexionDB.php");
 require_once("../Entite/Tache.php");
+require_once ("Gateway.php");
 
 
-class TacheGateway
+class TacheGateway extends Gateway
 {
 
-    private $con;
-
-    /**
-     * TacheGateway constructor.
-     * @param $con
-     */
-    public function __construct($con)
+    public function __construct()
     {
-        $this->con = $con;
+        parent::__construct();
     }
 
 
     function add($nom,$idListeTache){
         try {
-            $query = 'INSERT into tache values(:des,:id)';
-            $this->con->executeQuery($query, array(
+            $query = 'INSERT into tache values(:des,:id,false)';
+            $this->connexion->executeQuery($query, array(
                 ':des' => array($nom, PDO::PARAM_STR),
                 ':id' => array($idListeTache, PDO::PARAM_INT)));
         }
@@ -41,11 +36,11 @@ class TacheGateway
         try {
             $tabTache = [];
             $query = 'SELECT * FROM tache WHERE idListeTache = :id';
-            $this->con->executeQuery($query, array(
+            $this->connexion->executeQuery($query, array(
                 ':id' => array($idListeTache, PDO::PARAM_INT)));
-            $result = $this->con->getResults();
+            $result = $this->connexion->getResults();
             foreach ($result as $row) {
-                $tabTache[] = new Tache($row['nom']);
+                $tabTache[] = new Tache($row['nom'],$row['complete']);
             }
             return $tabTache;
         } catch (PDOException $e) {
@@ -56,7 +51,7 @@ class TacheGateway
     function delete($nom,$idListeTache){
         try {
             $query = 'DELETE FROM tache WHERE idListeTache = :idListeTache and nom = :nom';
-            $this->con->executeQuery($query, array(
+            $this->connexion->executeQuery($query, array(
                 ':idListeTache' => array($idListeTache, PDO::PARAM_INT),
                 ':nom' => array($nom, PDO::PARAM_STR)));
         } catch (PDOException $e) {
@@ -67,12 +62,23 @@ class TacheGateway
     function deleteAll($idListeTache){
         try{
             $query = 'DELETE FROM tache WHERE idListeTache = :id';
-            $this->con->executeQuery($query, array(
+            $this->connexion->executeQuery($query, array(
                 ':id' => array($idListeTache, PDO::PARAM_INT)));
         } catch (PDOException $e){
             throw $e;
         }
     }
 
+    function completeTask($nom,$idListeTache){
+        try {
+            $query = 'UPDATE tache SET complete=true WHERE nom = :nom and idListeTache = :idListeTache';
+            $this->connexion->executeQuery($query, array(
+                ':nom' => array($nom, PDO::PARAM_STR),
+                ':idListeTache' => array($idListeTache, PDO::PARAM_INT)));
+
+        } catch (PDOException $e){
+            throw $e;
+        }
+    }
 
 }

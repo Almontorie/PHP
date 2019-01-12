@@ -8,27 +8,24 @@
 
 require_once("ConnexionDB.php");
 require_once("../Entite/Tache.php");
+require_once ("Gateway.php");
 
 
-class TachePublicGateway
+class TachePublicGateway extends Gateway
 {
-
-    private $con;
-
     /**
-     * TacheGateway constructor.
-     * @param $con
+     * TachePublicGateway constructor.
      */
-    public function __construct($con)
+    public function __construct()
     {
-        $this->con = $con;
+        parent::__construct();
     }
 
 
     function add($nom,$idListeTache){
         try {
             $query = 'INSERT into tachepublic values(:des,:id,false)';
-            $this->con->executeQuery($query, array(
+            $this->connexion->executeQuery($query, array(
                 ':des' => array($nom, PDO::PARAM_STR),
                 ':id' => array($idListeTache, PdO::PARAM_INT)));
         }
@@ -41,9 +38,9 @@ class TachePublicGateway
         try {
             $tabTache = [];
             $query = 'SELECT * FROM tachepublic WHERE idListeTache = :id';
-            $this->con->executeQuery($query, array(
+            $this->connexion->executeQuery($query, array(
                 ':id' => array($idListeTache, PDO::PARAM_STR)));
-            $result = $this->con->getResults();
+            $result = $this->connexion->getResults();
             foreach ($result as $row) {
                 $tabTache[] = new Tache($row['nom'],$row['complete']);
             }
@@ -56,7 +53,7 @@ class TachePublicGateway
     function delete($nom,$idListeTache){
         try {
             $query = 'DELETE FROM tachepublic WHERE idListeTache = :idListeTache and nom = :nom';
-            $this->con->executeQuery($query, array(
+            $this->connexion->executeQuery($query, array(
                 ':idListeTache' => array($idListeTache, PDO::PARAM_INT),
                 ':nom' => array($nom, PDO::PARAM_STR)));
         } catch (PDOException $e) {
@@ -67,7 +64,7 @@ class TachePublicGateway
     function deleteAll($idListeTache){
         try{
             $query = 'DELETE FROM tachepublic WHERE idListeTache = :idListeTache';
-            $this->con->executeQuery($query, array(
+            $this->connexion->executeQuery($query, array(
                 ':idListeTache' => array($idListeTache, PDO::PARAM_INT)));
         } catch (PDOException $e){
             throw $e;
@@ -77,7 +74,7 @@ class TachePublicGateway
     function completeTask($nom,$idListeTache){
         try {
             $query = 'UPDATE tachepublic SET complete=true WHERE nom = :nom and idListeTache = :idListeTache';
-            $this->con->executeQuery($query, array(
+            $this->connexion->executeQuery($query, array(
                 ':nom' => array($nom, PDO::PARAM_STR),
                 ':idListeTache' => array($idListeTache, PDO::PARAM_INT)));
 

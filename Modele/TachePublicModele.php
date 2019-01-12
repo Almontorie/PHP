@@ -8,16 +8,14 @@
 
 class TachePublicModele
 {
-    private $con;
 
-    public function __construct($con)
+    public function __construct()
     {
-        $this->con = $con;
     }
 
     public function add($nom,$idListeTache){
         try {
-            $tachePublicGateway = new TachePublicGateway($this->con);
+            $tachePublicGateway = new TachePublicGateway();
             $tachePublicGateway->add($nom,$idListeTache);
         }
         catch (PDOException $e){
@@ -27,7 +25,7 @@ class TachePublicModele
 
     public function read($idListeTache){
         try{
-            $tachePublicGateway = new TachePublicGateway($this->con);
+            $tachePublicGateway = new TachePublicGateway();
             return $tachePublicGateway->read($idListeTache);
 
         } catch (PDOException $e){
@@ -37,7 +35,7 @@ class TachePublicModele
 
     public function deleteAll($idListeTache){
         try{
-            $tachePublicGateway = new TachePublicGateway($this->con);
+            $tachePublicGateway = new TachePublicGateway();
             $tachePublicGateway->deleteAll($idListeTache);
 
         } catch (PDOException $e){
@@ -46,7 +44,7 @@ class TachePublicModele
     }
 
     public function completeTask($nom,$idListeTache){
-        $tachePublicGateway = new TachePublicGateway($this->con);
+        $tachePublicGateway = new TachePublicGateway();
         $tachePublicGateway->completeTask($nom,$idListeTache);
     }
 

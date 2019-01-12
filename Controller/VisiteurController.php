@@ -22,24 +22,12 @@ class VisiteurController
         $this->validation = new Validation();
     }
 
-    private function connexion() {
-        try {
-            $dsn = "mysql:host=localhost;dbname=dbalmontorie";
-            $user = "root";
-            $passwd = "";
-            return new ConnexionDB($dsn, $user, $passwd);
-        }
-        catch (PDOException $e){
-            throw $e;
-        }
-    }
 
     public function chargementTabListTache(){
-        $con=$this->connexion();
-        $modele = new ListeTachePublicModele($con);
+        $modele = new ListeTachePublicModele();
         $result = $modele->load();
 
-        $modeleTache = new TachePublicModele($con);
+        $modeleTache = new TachePublicModele();
         foreach ($result as $listTache){
             $list = $modeleTache->read($listTache->getId());
             $listTache->setListTache($list);
@@ -53,18 +41,16 @@ class VisiteurController
         if (! $this->validation->validListLength($POST['nom']))
             return false;
 
-        $con=$this->connexion();
-        $modele = new ListeTachePublicModele($con);
+        $modele = new ListeTachePublicModele();
         $modele->add($POST['nom']);
         return true;
     }
 
     public function supprimerListeTache($POST){
-        $con=$this->connexion();
-        $modele = new ListeTachePublicModele($con);
+        $modele = new ListeTachePublicModele();
         $modele->delete($POST['idToDelete']);
 
-        $modeleTache = new TachePublicModele($con);
+        $modeleTache = new TachePublicModele();
         $modeleTache->deleteAll($POST['idToDelete']);
     }
 
@@ -73,15 +59,13 @@ class VisiteurController
         if (! $this->validation->validTaskLength($POST['nom']))
             return false;
 
-        $con = $this->connexion();
-        $modele = new TachePublicModele($con);
+        $modele = new TachePublicModele();
         $modele->add($POST['nom'],$POST['id']);
         return true;
     }
 
     public function completerTache($nom,$idListeTache){
-        $con = $this->connexion();
-        $modele = new TachePublicModele($con);
+        $modele = new TachePublicModele();
         $modele->completeTask($nom,$idListeTache);
     }
 

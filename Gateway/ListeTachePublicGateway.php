@@ -7,24 +7,25 @@
  */
 
 require_once ("../Entite/ListeTache.php");
+require_once ("Gateway.php");
 
-class ListeTachePublicGateway
+
+class ListeTachePublicGateway extends Gateway
 {
-    private $con;
-
-    public function __construct(ConnexionDB $con)
+    public function __construct()
     {
-        $this->con = $con;
+        parent::__construct();
     }
+
 
     function read()
     {
         try {
             $query = 'SELECT * FROM listetachepublic';
-            $this->con->executeQuery($query);
-            if ($this->con->getRowCount() == 0)
+            $this->connexion->executeQuery($query);
+            if ($this->connexion->getRowCount() == 0)
                 return NULL;
-            $result = $this->con->getResults();
+            $result = $this->connexion->getResults();
             foreach ($result as $row){
                 $tabListTache[] = new ListeTache($row['nom'],false,$row['id']);
             }
@@ -37,7 +38,7 @@ class ListeTachePublicGateway
     function add($nom){
         try {
             $query = 'INSERT INTO listetachepublic (nom) VALUES (:nom)';
-            $this->con->executeQuery($query, array(
+            $this->connexion->executeQuery($query, array(
                 ':nom' => array($nom, PDO::PARAM_STR)));
         } catch (PDOException $e) {
             throw $e;
@@ -47,7 +48,7 @@ class ListeTachePublicGateway
     public function delete($id){
         try {
             $query = 'DELETE FROM listetachepublic WHERE id = :id';
-            $this->con->executeQuery($query, array(
+            $this->connexion->executeQuery($query, array(
                 ':id' => array($id, PDO::PARAM_INT)));
         } catch (PDOException $e) {
             throw $e;

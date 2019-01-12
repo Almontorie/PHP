@@ -10,6 +10,9 @@ require_once("../Controller/UtilisateurController.php");
 
 session_start();
 
+if(!isConnected())
+    header ("Location: VueConnexion.php");
+
 ?>
 <form method="post">
 <?php
@@ -36,8 +39,20 @@ try {
     }
 
     if(isset($_POST['deconnexion'])){
-        $_SESSION['pseudo'] = null;
+        session_unset();
+        session_destroy();
         header("Location: VueAccueil.php");
+    }
+
+    if(isset($_POST['completerTache'])){
+        echo "<br/>";
+        foreach ($_POST['checkbox'] as $strTache){
+            $tache = explode(" ",$strTache);
+            $user->completerTache($tache[0],$tache[1]);
+            echo "<br/>";
+        }
+        echo "<br/>";
+        header("Location: VueListeTache.php");
     }
 
     echo "<br/>";
@@ -60,7 +75,18 @@ function affichTab($tab){
             <?php
             echo "<br/>";
             foreach ($item->getListTache() as $tache) {
-                echo " - " . $tache->getNom();
+                if($tache->isComplete()) {
+                    echo " - ";
+                    ?>
+                    <s><?php echo $tache->getNom()?></s>
+                    <?php
+                }
+                else {
+                    echo " - " . $tache->getNom();
+                }
+                ?>
+                <input type="checkbox" name="checkbox[]" value="<?php echo $tache->getNom()." ".$item->getId() ?>"/>
+                <?php
                 echo "<br/>";
             }
 
@@ -69,7 +95,16 @@ function affichTab($tab){
     }
 }
 
+function isConnected(){
+    if(isset($_SESSION['pseudo']))
+        return true;
+    return false;
+}
+
 ?>
+    <input type="submit" name="completerTache" value="Valider les tâches" />
+    <br/>
+    <br/>
     <button type="submit" name="deconnexion">Deconnexion</button>
 </form>
 

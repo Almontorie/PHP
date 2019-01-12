@@ -11,16 +11,14 @@ require_once ("../Gateway/TachePublicGateway.php");
 
 class ListeTachePublicModele
 {
-    private $con;
 
-    public function __construct($con)
+    public function __construct()
     {
-        $this->con = $con;
     }
 
     public function load(){
         try {
-            $listTachePublicGateway = new ListeTachePublicGateway($this->con);
+            $listTachePublicGateway = new ListeTachePublicGateway();
             $tabLisTachePublic = $listTachePublicGateway->read();
             return $tabLisTachePublic;
         }
@@ -31,7 +29,7 @@ class ListeTachePublicModele
 
     public function add($nom){
         try {
-            $listTachePublicGateway = new ListeTachePublicGateway(($this->con));
+            $listTachePublicGateway = new ListeTachePublicGateway();
             $listTachePublicGateway->add($nom);
         }
         catch (PDOException $e){
@@ -41,7 +39,7 @@ class ListeTachePublicModele
 
     public function delete($id){
         try {
-            $listTachePublicGateway = new ListeTachePublicGateway(($this->con));
+            $listTachePublicGateway = new ListeTachePublicGateway();
             $listTachePublicGateway->delete($id);
         }
         catch (PDOException $e){

@@ -12,16 +12,14 @@ require_once ("../Gateway/TacheGateway.php");
 
 class ListeTacheModele
 {
-    private $con;
 
-    public function __construct($con)
+    public function __construct()
     {
-        $this->con = $con;
     }
 
     public function load($pseudo){
         try {
-            $listTacheGateway = new ListeTacheGateway($this->con);
+            $listTacheGateway = new ListeTacheGateway();
             $tabLisTache = $listTacheGateway->read($pseudo);
             return $tabLisTache;
         }
@@ -32,7 +30,7 @@ class ListeTacheModele
 
     public function add($pseudo, $nom){
         try {
-            $listTacheGateway = new ListeTacheGateway(($this->con));
+            $listTacheGateway = new ListeTacheGateway();
             $listTacheGateway->add($pseudo, $nom);
         }
         catch (PDOException $e){
@@ -42,7 +40,7 @@ class ListeTacheModele
 
     public function delete($id){
         try {
-            $listTacheGateway = new ListeTacheGateway(($this->con));
+            $listTacheGateway = new ListeTacheGateway();
             $listTacheGateway->delete($id);
         }
         catch (PDOException $e){
