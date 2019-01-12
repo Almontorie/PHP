@@ -16,7 +16,7 @@ if(!isConnected())
 ?>
 
 <FORM METHOD="post">
-    Nom de la liste : <INPUT TYPE=text name="nom">
+    Nom de la liste : <INPUT TYPE=text name="nom"> (100 caractères maximum et caractère '|' interdit)
     <P>
         <INPUT TYPE=SUBMIT NAME="valid" VALUE="Valider">
     </P>
@@ -29,7 +29,7 @@ try {
         $user = new UtilisateurController();
         $user->setUtilisateur(new Utilisateur($_SESSION['pseudo']));
         if (! $user->ajouterListeTache($_POST))
-            echo "Nom de la liste invalide (100 caractères max)";
+            echo "Nom de la liste invalide (100 caractères max et caractère '|' interdit)";
         else
             header("Location: VueListeTache.php");
     }

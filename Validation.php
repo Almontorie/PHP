@@ -20,13 +20,13 @@ class Validation
     }
 
     function validTaskLength($task){
-        if(strlen($task) > $this->taskLength or empty($task))
+        if(strlen($task) > $this->taskLength or empty($task) or stripos($task, '|'))
             return false;
         return true;
     }
 
     function validListLength($list){
-        if(strlen($list) > $this->listLength or empty($list))
+        if(strlen($list) > $this->listLength or empty($list) or stripos($list, '|'))
             return false;
         return true;
     }

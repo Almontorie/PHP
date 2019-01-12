@@ -6,6 +6,5 @@
  * Time: 07:08
  */
 
-header ("Location : VueAccueil.php");
+header ("Location : Vue/VueAccueil.php");
 
-?>

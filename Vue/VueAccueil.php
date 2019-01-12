@@ -59,7 +59,7 @@ try {
     if(isset($_POST['completerTache'])){
         echo "<br/>";
         foreach ($_POST['checkbox'] as $strTache){
-            $tache = explode(" ",$strTache);
+            $tache = explode("|",$strTache);
             $user->completerTache($tache[0],$tache[1]);
             echo "<br/>";
         }
@@ -93,7 +93,7 @@ function affichTab($tab){
                 echo " - " . $tache->getNom();
             }
             ?>
-            <input type="checkbox" name="checkbox[]" value="<?php echo $tache->getNom()." ".$item->getId() ?>"/>
+            <input type="checkbox" name="checkbox[]" value="<?php echo $tache->getNom()."|".$item->getId() ?>"/>
             <?php
             echo "<br/>";
         }
@@ -136,4 +136,9 @@ function isConnected(){
 <button onclick="window.location.href='VueCreationListePublic.php'">Ajouter une liste de tâche publique</button>
 <br/>
 <br/>
-<button onclick="window.location.href='VueInscription.php'">S'inscrire</button>
+<?php
+if(!isConnected()) {
+    ?>
+    <button onclick="window.location.href='VueInscription.php'">S'inscrire</button>
+    <?php
+}

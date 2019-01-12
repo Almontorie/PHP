@@ -14,7 +14,7 @@ $POST['id'] = $_SESSION['id'];
 ?>
 
     <FORM METHOD="post">
-        Nom de la tâche : <INPUT TYPE=text name="nom">
+        Nom de la tâche : <INPUT TYPE=text name="nom"> (200 caractères maximum et caractère '|' interdit)
         <P>
             <INPUT TYPE=SUBMIT NAME="valid" VALUE="Valider">
         </P>
@@ -27,7 +27,7 @@ try {
         $user = new VisiteurController();
         $POST['nom'] = $_POST['nom'];
         if (! $user->ajouterTache($POST))
-            echo "Nom de la liste invalide (200 caractères max)";
+            echo "Nom de la tâche invalide (200 caractères max et caractère '|' interdit)";
         else
             header("Location: VueAccueil.php");
     }

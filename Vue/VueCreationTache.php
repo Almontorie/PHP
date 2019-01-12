@@ -17,7 +17,7 @@ $POST['id'] = $_SESSION['id'];
 ?>
 
 <FORM METHOD="post">
-    Nom de la liste : <INPUT TYPE=text name="nom">
+    Nom de la liste : <INPUT TYPE=text name="nom"> (200 caractères maximum et caractère '|' interdit)
     <P>
         <INPUT TYPE=SUBMIT NAME="valid" VALUE="Valider">
     </P>
@@ -31,7 +31,7 @@ try {
         $user->setUtilisateur(new Utilisateur($_SESSION['pseudo']));
         $POST['nom'] = $_POST['nom'];
         if (! $user->ajouterTache($POST))
-            echo "Nom de la liste invalide (200 caractères max)";
+            echo "Nom de la tâche invalide (200 caractères max et caractère '|' interdit)";
         else
             header("Location: VueListeTache.php");
     }
