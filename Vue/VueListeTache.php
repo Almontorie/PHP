@@ -1,5 +1,6 @@
 <link href="../bootstrap-3.3.7-dist/css/bootstrap.css" rel="stylesheet">
 <link href="../style/stylesheet.css" rel="stylesheet">
+<link href="../bootstrap-3.3.7-dist/css/sticky-footer.css" rel="stylesheet">
 <?php
 /**
  * Created by PhpStorm.
@@ -145,3 +146,9 @@ if(!isConnected())
         <input class="btn btn-default" type="submit" name="ajoutTache" value="Ajouter une liste de tâche" />
     </p>
 </form>
+
+<footer class="footer">
+    <div class="container">
+        <p class="text-muted">Designed by Lucas Torret et Alexis Montorier</p>
+    </div>
+</footer>

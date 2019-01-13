@@ -1,5 +1,6 @@
 <link href="../bootstrap-3.3.7-dist/css/bootstrap.css" rel="stylesheet">
 <link href="../style/stylesheet.css" rel="stylesheet">
+<link href="../bootstrap-3.3.7-dist/css/sticky-footer.css" rel="stylesheet">
 <?php
 /**
  * Created by PhpStorm.
@@ -31,7 +32,7 @@ if(!isConnected())
                         ?>
                     </a>
                 </li>
-                <li><button class="btn btn-default navbar-btn" onclick="window.location.href='VueAccueil.php'">Retour</button></li>
+                <li><button class="btn btn-default navbar-btn" onclick="window.location.href='VueListeTache.php'">Retour</button></li>
             </ul>
         </div>
     </nav>
@@ -71,4 +72,10 @@ function isConnected(){
 }
 
 ?>
+
+<footer class="footer">
+    <div class="container">
+        <p class="text-muted">Designed by Lucas Torret et Alexis Montorier</p>
+    </div>
+</footer>
 
