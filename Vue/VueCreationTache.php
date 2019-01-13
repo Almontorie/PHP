@@ -1,3 +1,5 @@
+<link href="../bootstrap-3.3.7-dist/css/bootstrap.css" rel="stylesheet">
+<link href="../style/stylesheet.css" rel="stylesheet">
 <?php
 /**
  * Created by PhpStorm.
@@ -16,10 +18,36 @@ if(!isConnected())
 $POST['id'] = $_SESSION['id'];
 ?>
 
+
+<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+    <nav class="navbar navbar-default">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">To Do List</a>
+        </div>
+        <div class="container-fluid">
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a>
+                        <?php
+                            echo "Utilisateur : ".$_SESSION['pseudo'];
+                        ?>
+                    </a>
+                </li>
+                <li><button class="btn btn-default navbar-btn" onclick="window.location.href='VueAccueil.php'">Retour</button></li>
+            </ul>
+        </div>
+    </nav>
+</div>
+
+<h1>Ajout d'une tâche publique</h1>
+
 <FORM METHOD="post">
-    Nom de la tâche : <INPUT TYPE=text name="nom"> (200 caractères maximum et caractère '|' interdit)
+    <div class="centerBloc input-group">
+        <br>
+        <INPUT class="form-control" TYPE=text name="nom" placeholder="Nom de la tâche"> (100 caractères maximum et caractère '|' interdit)
+    </div>
     <P>
-        <INPUT TYPE=SUBMIT NAME="valid" VALUE="Valider">
+        <br><INPUT type="submit" class="btn btn-success" NAME="valid" VALUE="Valider">
     </P>
 </FORM>
 
@@ -31,7 +59,7 @@ try {
         $user->setUtilisateur(new Utilisateur($_SESSION['pseudo']));
         $POST['nom'] = $_POST['nom'];
         if (! $user->ajouterTache($POST))
-            echo "Nom de la tâche invalide (200 caractères max et caractère '|' interdit)";
+            echo "<p class='red-text'>Nom de la tâche invalide (200 caractères max et caractère '|' interdit)</p>";
         else
             header("Location: VueListeTache.php");
     }
@@ -46,6 +74,3 @@ function isConnected(){
 }
 
 ?>
-
-<button onclick="window.location.href='VueListeTache.php'">Retour</button>
-
