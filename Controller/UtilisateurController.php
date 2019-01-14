@@ -18,9 +18,90 @@ class UtilisateurController
     private $validation;
 
 
-    public function __construct()
+    public function __construct($action)
     {
         $this->validation = new Validation();
+
+
+        switch ($action) {
+
+            case "deconnexion":
+                session_unset();
+                session_destroy();
+                header("Location: VueAccueil.php");
+                break;
+
+            case "listetache":
+                header("Location: VueListeTache.php");
+                break;
+
+            case "connexionPseudoMdp":
+                $result = $this->connexionUtilisateur($_POST);
+                if(!$result) {
+                    echo "<p class='red-text'>Pseudo ou mot de passe incorrect</p>";
+                }
+                else {
+                    $_SESSION['pseudo'] = $_POST['pseudo'];
+                    header("Location: VueListeTache.php");
+                }
+                break;
+
+            case "creationListeNom":
+                $this->setUtilisateur(new Utilisateur($_SESSION['pseudo']));
+                if (! $this->ajouterListeTache($_POST))
+                    echo "<p class='red-text'>Nom de la liste invalide (100 caractères max et caractère '|' interdit)</p>";
+                else
+                    header("Location: VueListeTache.php");
+                break;
+
+            case "creationTacheNom":
+                $this->setUtilisateur(new Utilisateur($_SESSION['pseudo']));
+                $POST['nom'] = $_POST['nom'];
+                if (! $this->ajouterTache($POST))
+                    echo "<p class='red-text'>Nom de la tâche invalide (200 caractères max et caractère '|' interdit)</p>";
+                else
+                    header("Location: VueListeTache.php");
+                break;
+
+            case "inscriptionPseudoMdp";
+                $result = $this->inscriptionUtilisateur($_POST);
+                if(!$result) {
+                    echo "<p class='red-text'>Pseudo déjà utilisé</p>";
+                }
+                else {
+                    header("Location: VueConnexion.php");
+                }
+                break;
+
+            case "id":
+                $_SESSION['id'] = $_POST['id'];
+                header("Location: VueCreationTache.php");
+                break;
+
+            case "idToDelete":
+                $this->supprimerListeTache($_POST);
+                $tab = $this->chargementTabListTache();
+                header("Location: VueListeTache.php");
+                break;
+
+            case "completerTache":
+                if(isset($_POST['checkbox'])) {
+                    foreach ($_POST['checkbox'] as $strTache) {
+                        $tache = explode("|", $strTache);
+                        $this->completerTache($tache[0], $tache[1]);
+                    }
+                    header("Location: VueListeTache.php");
+                }
+                break;
+
+            case "accueil":
+                header("Location: VueAccueil.php");
+                break;
+
+            case "ajoutTache":
+                header("Location: VueCreationListe.php");
+                break;
+        }
     }
 
     /**
@@ -57,6 +138,22 @@ class UtilisateurController
         }
     }
 
+    public function chargementTabListTachePublique(){
+        $modele = new ListeTachePublicModele();
+        $result = $modele->load();
+
+        $modeleTache = new TachePublicModele();
+        if($result == null){
+            return null;
+        }
+        foreach ($result as $listTache){
+            $list = $modeleTache->read($listTache->getId());
+            $listTache->setListTache($list);
+        }
+
+        return $result;
+    }
+
     public function inscriptionUtilisateur($POST){
         $modele = new UtilisateurModele();
 
@@ -67,7 +164,7 @@ class UtilisateurController
 
     public function chargementTabListTache(){
         $modele = new ListeTacheModele();
-        $result = $modele->load($this->utilisateur->getPseudo());
+        $result = $modele->load($_SESSION['pseudo']);
 
         $modeleTache = new TacheModele();
         if($result != null) {
@@ -77,6 +174,7 @@ class UtilisateurController
             }
         }
 
+        $this->utilisateur = new Utilisateur($_SESSION);
         $this->utilisateur->setTabListe($result);
         return $result;
     }
@@ -105,7 +203,7 @@ class UtilisateurController
             return false;
 
         $modele = new TacheModele();
-        $modele->add($POST['nom'],$POST['id']);
+        $modele->add($POST['nom'],$_POST['id']);
         return true;
     }
 

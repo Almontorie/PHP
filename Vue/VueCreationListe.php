@@ -9,7 +9,7 @@
  * Time: 09:30
  */
 
-require_once ("../Controller/UtilisateurController.php");
+require_once ("../Controller/FrontController.php");
 
 session_start();
 
@@ -53,14 +53,14 @@ if(!isConnected())
 <?php
 
 try {
+    $action = "";
+
     if(isset($_POST['nom'])) {
-        $user = new UtilisateurController();
-        $user->setUtilisateur(new Utilisateur($_SESSION['pseudo']));
-        if (! $user->ajouterListeTache($_POST))
-            echo "<p class='red-text'>Nom de la liste invalide (100 caractères max et caractère '|' interdit)</p>";
-        else
-            header("Location: VueListeTache.php");
+        $action = "creationListeNom";
     }
+
+    $front = new FrontController($action);
+
 } catch (PDOException $e) {
     echo $e->getMessage();
 }

@@ -11,19 +11,73 @@ require_once ('../Modele/ListeTachePublicModele.php');
 require_once ("../Validation.php");
 require_once ("../Modele/TachePublicModele.php");
 
-
 class VisiteurController
 {
 
     private $validation;
 
-    public function __construct()
+    public function __construct($action)
     {
         $this->validation = new Validation();
+
+
+        switch ($action){
+
+            case "id":
+                $_SESSION['id'] = $_POST['id'];
+                header("Location: VueCreationTachePublic.php");
+                break;
+
+            case "idToDelete":
+                $this->supprimerListeTache($_POST);
+                $tab = $this->chargementTabListTache();
+                header("Location: VueAccueil.php");
+                break;
+
+
+            case "connexion":
+                header("Location: VueConnexion.php");
+                break;
+
+
+            case "completerTache":
+                if(isset($_POST['checkbox'])) {
+                    foreach ($_POST['checkbox'] as $strTache) {
+                        $tache = explode("|", $strTache);
+                        $this->completerTache($tache[0], $tache[1]);
+                    }
+                    header("Location: VueAccueil.php");
+                }
+                break;
+
+            case "inscription":
+                header("Location: VueInscription.php");
+                break;
+
+            case "ajouterListe":
+                header("Location: VueCreationListePublic.php");
+                break;
+
+            case "creationListePubliqueNom":
+                if (! $this->ajouterListeTache($_POST))
+                    echo "<p class='red-text'>Nom de la liste invalide (100 caractères max et caractère '|' interdit)</p>";
+                else
+                    header("Location: VueAccueil.php");
+                break;
+
+            case "creationTachePubliqueNom":
+                $POST['nom'] = $_POST['nom'];
+                if (! $this->ajouterTache($POST))
+                    echo "<p class='red-text'>Nom de la tâche invalide (200 caractères max et caractère '|' interdit)</p>";
+                else
+                    header("Location: VueAccueil.php");
+                break;
+            default:
+        }
     }
 
 
-    public function chargementTabListTache(){
+    public function chargementTabListTachePublique(){
         $modele = new ListeTachePublicModele();
         $result = $modele->load();
 
@@ -63,7 +117,7 @@ class VisiteurController
             return false;
 
         $modele = new TachePublicModele();
-        $modele->add($POST['nom'],$POST['id']);
+        $modele->add($POST['nom'],$_POST['id']);
         return true;
     }
 

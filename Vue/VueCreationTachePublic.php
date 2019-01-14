@@ -9,11 +9,11 @@
  * Time: 21:40
  */
 
-require_once ("../Controller/VisiteurController.php");
+require_once ("../Controller/FrontController.php");
 
 session_start();
 
-$POST['id'] = $_SESSION['id'];
+$_POST['id'] = $_SESSION['id'];
 ?>
 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
     <nav class="navbar navbar-default">
@@ -43,14 +43,15 @@ $POST['id'] = $_SESSION['id'];
 <?php
 
 try {
+    $action = "";
+
     if(isset($_POST['nom'])) {
-        $user = new VisiteurController();
-        $POST['nom'] = $_POST['nom'];
-        if (! $user->ajouterTache($POST))
-            echo "<p class='red-text'>Nom de la tâche invalide (200 caractères max et caractère '|' interdit)</p>";
-        else
-            header("Location: VueAccueil.php");
+        $action = "creationTachePubliqueNom";
     }
+
+    $front = new FrontController($action);
+
+
 } catch (PDOException $e) {
     echo $e->getMessage();
 }

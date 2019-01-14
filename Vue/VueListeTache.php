@@ -9,7 +9,7 @@
  * Time: 08:12
  */
 
-require_once("../Controller/UtilisateurController.php");
+require_once("../Controller/FrontController.php");
 
 session_start();
 
@@ -45,48 +45,38 @@ if(!isConnected())
     <?php
 
     try {
-        $user = new UtilisateurController();
-        $user->setUtilisateur(new Utilisateur($_SESSION['pseudo']));
-        echo "<br/>";
-
-        $tab = $user->chargementTabListTache();
-        affichTab($tab);
+        $action = "";
 
         if(isset($_POST['id'])){
-            $_SESSION['id'] = $_POST['id'];
-            header("Location: VueCreationTache.php");
+            $action = "id";
         }
 
         if(isset($_POST['idToDelete'])) {
-            $user->supprimerListeTache($_POST);
-            $tab = $user->chargementTabListTache();
-            header("Location: VueListeTache.php");
+            $action = "idToDelete";
         }
 
         if(isset($_POST['deconnexion'])){
-            session_unset();
-            session_destroy();
-            header("Location: VueAccueil.php");
+            $action = "deconnexion";
         }
 
         if(isset($_POST['completerTache'])){
-            echo "<br/>";
-            foreach ($_POST['checkbox'] as $strTache){
-                $tache = explode("|",$strTache);
-                $user->completerTache($tache[0],$tache[1]);
-                echo "<br/>";
-            }
-            echo "<br/>";
-            header("Location: VueListeTache.php");
+            $action = "completerTache";
         }
 
         if (isset($_POST['accueil'])){
-            header("Location: VueAccueil.php");
+            $action = "accueil";
         }
 
         if (isset($_POST['ajoutTache'])){
-            header("Location: VueCreationListe.php");
+            $action = "ajoutTache";
         }
+
+        $front = new FrontController($action);
+        $front->getController()->setUtilisateur(new Utilisateur($_SESSION['pseudo']));
+        echo "<br/>";
+
+        $tab = $front->getController()->chargementTabListTache();
+        affichTab($tab);
 
         echo "<br/>";
     } catch (PDOException $e){

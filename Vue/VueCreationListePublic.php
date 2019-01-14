@@ -9,7 +9,7 @@
  * Time: 20:11
  */
 
-require_once ("../Controller/VisiteurController.php");
+require_once ("../Controller/FrontController.php");
 
 ?>
 
@@ -41,13 +41,14 @@ require_once ("../Controller/VisiteurController.php");
 <?php
 
 try {
+    $action = "";
+
     if(isset($_POST['nom'])) {
-        $user = new VisiteurController();
-        if (! $user->ajouterListeTache($_POST))
-            echo "<p class='red-text'>Nom de la liste invalide (100 caractères max et caractère '|' interdit)</p>";
-        else
-            header("Location: VueAccueil.php");
+        $action = "creationListePubliqueNom";
     }
+
+    $front = new FrontController($action);
+
 } catch (PDOException $e) {
     echo $e->getMessage();
 }

@@ -9,7 +9,7 @@
  * Time: 10:48
  */
 
-require_once ("../Controller/VisiteurController.php");
+require_once ("../Controller/FrontController.php");
 require_once ("../Validation.php");
 
 session_start();
@@ -66,58 +66,46 @@ session_start();
             <?php
         }
         try {
-            $user = new VisiteurController();
-            $tab = $user->chargementTabListTache();
-
-
-            affichTab($tab);
+            $action = "test";
 
             if(isset($_POST['id'])){
-                $_SESSION['id'] = $_POST['id'];
-                header("Location: VueCreationTachePublic.php");
+                $action = "id";
             }
 
             if(isset($_POST['idToDelete'])) {
-                $user->supprimerListeTache($_POST);
-                $tab = $user->chargementTabListTache();
-                header("Location: VueAccueil.php");
+                $action = "idToDelete";
             }
 
             if(isset($_POST['connexion'])) {
-                header("Location: VueConnexion.php");
+                $action = "connexion";
             }
 
             if(isset($_POST['deconnexion'])) {
-                session_unset();
-                session_destroy();
-                header("Location: VueAccueil.php");
+                $action = "deconnexion";
             }
 
             if(isset($_POST['listetache'])){
                 if(isConnected())
-                    header("Location: VueListeTache.php");
+                    $action = "listetache";
                 else
                     echo "Vous devez tout d'abord vous connecter";
             }
 
             if(isset($_POST['completerTache'])){
-                echo "<br/>";
-                foreach ($_POST['checkbox'] as $strTache){
-                    $tache = explode("|",$strTache);
-                    $user->completerTache($tache[0],$tache[1]);
-                    echo "<br/>";
-                }
-                echo "<br/>";
-                header("Location: VueAccueil.php");
+                $action = "completerTache";
             }
 
             if(isset($_POST['inscription'])){
-                header("Location: VueInscription.php");
+                $action = "inscription";
             }
 
             if(isset($_POST['ajoutListe'])){
-                    header("Location: VueCreationListePublic.php");
+                $action = "ajouterListe";
             }
+
+            $front = new FrontController($action);
+            $tab = $front->getController()->chargementTabListTachePublique();
+            affichTab($tab);
 
 
         } catch (PDOException $e){

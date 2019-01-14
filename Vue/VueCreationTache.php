@@ -9,14 +9,14 @@
  * Time: 21:40
  */
 
-require_once ("../Controller/UtilisateurController.php");
+require_once ("../Controller/FrontController.php");
 
 session_start();
 
 if(!isConnected())
     header ("Location: VueConnexion.php");
 
-$POST['id'] = $_SESSION['id'];
+$_POST['id'] = $_SESSION['id'];
 ?>
 
 
@@ -55,15 +55,14 @@ $POST['id'] = $_SESSION['id'];
 <?php
 
 try {
+    $action = "";
+
     if(isset($_POST['nom'])) {
-        $user = new UtilisateurController();
-        $user->setUtilisateur(new Utilisateur($_SESSION['pseudo']));
-        $POST['nom'] = $_POST['nom'];
-        if (! $user->ajouterTache($POST))
-            echo "<p class='red-text'>Nom de la tâche invalide (200 caractères max et caractère '|' interdit)</p>";
-        else
-            header("Location: VueListeTache.php");
+        $action = "creationTacheNom";
     }
+
+    $front = new FrontController($action);
+
 } catch (PDOException $e) {
     echo $e->getMessage();
 }

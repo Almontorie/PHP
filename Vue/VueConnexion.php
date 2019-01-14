@@ -9,7 +9,7 @@
  * Time: 09:45
  */
 
-require_once("../Controller/UtilisateurController.php");
+require_once ("../Controller/FrontController.php");
 
 session_start();
 
@@ -54,18 +54,13 @@ if(isConnected())
     <?php
 
     try {
+        $action = "";
 
         if(! empty($_POST['pseudo']) && ! empty($_POST['mdp'])) {
-            $user = new UtilisateurController();
-            $result = $user->connexionUtilisateur($_POST);
-            if(!$result) {
-                echo "<p class='red-text'>Pseudo ou mot de passe incorrect</p>";
-            }
-            else {
-                $_SESSION['pseudo'] = $_POST['pseudo'];
-                header("Location: VueListeTache.php");
-            }
+            $action = "connexionPseudoMdp";
         }
+
+        $front = new FrontController($action);
 
 
     } catch (PDOException $e) {

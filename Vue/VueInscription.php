@@ -9,7 +9,7 @@
  * Time: 20:12
  */
 
-require_once("../Controller/UtilisateurController.php");
+require_once("../Controller/FrontController.php");
 
 ?>
 
@@ -44,23 +44,20 @@ require_once("../Controller/UtilisateurController.php");
 <?php
 
 try {
+    $action = "";
 
     if(! empty($_POST['pseudo']) && ! empty($_POST['mdp'])) {
-        $user = new UtilisateurController();
-        $result = $user->inscriptionUtilisateur($_POST);
-        if(!$result) {
-            echo "<p class='red-text'>Pseudo déjà utilisé</p>";
-        }
-        else {
-            header("Location: VueConnexion.php");
-        }
+        $action = "inscriptionPseudoMdp";
     }
 
+    $front = new FrontController($action);
 }
+
 catch(PDOException $e){
     echo $e->getMessage();
 }
 ?>
+
 <footer class="footer">
     <div class="container">
         <p class="text-muted">Designed by Lucas Torret et Alexis Montorier</p>
