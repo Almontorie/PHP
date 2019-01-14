@@ -105,6 +105,7 @@ session_start();
 
             $front = new FrontController($action);
             $tab = $front->getController()->chargementTabListTachePublique();
+
             affichTab($tab);
 
 

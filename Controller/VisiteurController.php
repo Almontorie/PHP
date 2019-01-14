@@ -30,7 +30,6 @@ class VisiteurController
 
             case "idToDelete":
                 $this->supprimerListeTache($_POST);
-                $tab = $this->chargementTabListTache();
                 header("Location: VueAccueil.php");
                 break;
 
@@ -59,16 +58,20 @@ class VisiteurController
                 break;
 
             case "creationListePubliqueNom":
-                if (! $this->ajouterListeTache($_POST))
-                    echo "<p class='red-text'>Nom de la liste invalide (100 caractères max et caractère '|' interdit)</p>";
+                if (! $this->ajouterListeTache($_POST)) {
+                    $error = "Nom de la liste invalide (100 caractères max et caractère '|' interdit)";
+                    header("Location: ../Vue/VueCreationListePublic.php?error=$error");
+                }
                 else
                     header("Location: VueAccueil.php");
                 break;
 
             case "creationTachePubliqueNom":
                 $POST['nom'] = $_POST['nom'];
-                if (! $this->ajouterTache($POST))
-                    echo "<p class='red-text'>Nom de la tâche invalide (200 caractères max et caractère '|' interdit)</p>";
+                if (! $this->ajouterTache($POST)) {
+                    $error = "Nom de la tâche invalide (200 caractères max et caractère '|' interdit)";
+                    header("Location: ../Vue/VueCreationTachePublic.php?error=$error");
+                }
                 else
                     header("Location: VueAccueil.php");
                 break;

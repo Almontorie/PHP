@@ -38,7 +38,8 @@ class UtilisateurController
             case "connexionPseudoMdp":
                 $result = $this->connexionUtilisateur($_POST);
                 if(!$result) {
-                    echo "<p class='red-text'>Pseudo ou mot de passe incorrect</p>";
+                    $error = "Pseudo ou mot de passe incorrect";
+                    header("Location: ../Vue/VueConnexion?error=$error");
                 }
                 else {
                     $_SESSION['pseudo'] = $_POST['pseudo'];
@@ -48,8 +49,10 @@ class UtilisateurController
 
             case "creationListeNom":
                 $this->setUtilisateur(new Utilisateur($_SESSION['pseudo']));
-                if (! $this->ajouterListeTache($_POST))
-                    echo "<p class='red-text'>Nom de la liste invalide (100 caractères max et caractère '|' interdit)</p>";
+                if (! $this->ajouterListeTache($_POST)) {
+                    $error = "Nom de la liste invalide (100 caractères max et caractère '|' interdit)";
+                    header("Location: ../Vue/VueCreationListe.php?error=$error");
+                }
                 else
                     header("Location: VueListeTache.php");
                 break;
@@ -57,8 +60,10 @@ class UtilisateurController
             case "creationTacheNom":
                 $this->setUtilisateur(new Utilisateur($_SESSION['pseudo']));
                 $POST['nom'] = $_POST['nom'];
-                if (! $this->ajouterTache($POST))
-                    echo "<p class='red-text'>Nom de la tâche invalide (200 caractères max et caractère '|' interdit)</p>";
+                if (! $this->ajouterTache($POST)) {
+                    $error = "Nom de la tâche invalide (200 caractères max et caractère '|' interdit)";
+                    header("Location: ../Vue/VueCreationTache.php?error=$error");
+                }
                 else
                     header("Location: VueListeTache.php");
                 break;
@@ -66,7 +71,8 @@ class UtilisateurController
             case "inscriptionPseudoMdp";
                 $result = $this->inscriptionUtilisateur($_POST);
                 if(!$result) {
-                    echo "<p class='red-text'>Pseudo déjà utilisé</p>";
+                    $error = "Pseudo déjà utilisé";
+                    header("Location: ../Vue/VueInscription.php?error=$error");
                 }
                 else {
                     header("Location: VueConnexion.php");

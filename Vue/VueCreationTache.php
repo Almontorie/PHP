@@ -40,7 +40,7 @@ $_POST['id'] = $_SESSION['id'];
     </nav>
 </div>
 
-<h1>Ajout d'une tâche publique</h1>
+<h1>Ajout d'une tâche privée</h1>
 
 <FORM METHOD="post">
     <div class="centerBloc input-group">
@@ -73,6 +73,9 @@ function isConnected(){
     return false;
 }
 
+if(isset($_GET['error'])){
+    echo "<p class='red-text'>".$_GET['error']."</p>";
+}
 ?>
 
 <footer class="footer">

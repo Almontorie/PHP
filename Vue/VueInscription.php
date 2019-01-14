@@ -56,6 +56,11 @@ try {
 catch(PDOException $e){
     echo $e->getMessage();
 }
+
+if(isset($_GET['error'])){
+    echo "<p class='red-text'>".$_GET['error']."</p>";
+}
+?>
 ?>
 
 <footer class="footer">

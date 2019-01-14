@@ -51,7 +51,6 @@ if(!isConnected())
 </FORM>
 
 <?php
-
 try {
     $action = "";
 
@@ -71,6 +70,9 @@ function isConnected(){
     return false;
 }
 
+if(isset($_GET['error'])){
+    echo "<p class='red-text'>".$_GET['error']."</p>";
+}
 ?>
 
 <footer class="footer">
