@@ -52,7 +52,7 @@ if(!isConnected())
         }
 
         if(isset($_POST['idToDelete'])) {
-            $action = "idToDelete";
+            $action = "idToDeletePrivate";
         }
 
         if(isset($_POST['deconnexion'])){
@@ -72,10 +72,8 @@ if(!isConnected())
         }
 
         $front = new FrontController($action);
-        $front->getController()->setUtilisateur(new Utilisateur($_SESSION['pseudo']));
-        echo "<br/>";
-
-        $tab = $front->getController()->chargementTabListTache();
+        //$front->getController()->setUtilisateur(new Utilisateur($_SESSION['pseudo']));
+        $tab = $front->chargementPrivee();
         affichTab($tab);
 
         echo "<br/>";

@@ -39,7 +39,7 @@ class VisiteurController
                 break;
 
 
-            case "completerTache":
+            case "completerTachePublique":
                 if(isset($_POST['checkbox'])) {
                     foreach ($_POST['checkbox'] as $strTache) {
                         $tache = explode("|", $strTache);
@@ -53,7 +53,7 @@ class VisiteurController
                 header("Location: VueInscription.php");
                 break;
 
-            case "ajouterListe":
+            case "ajouterListePublique":
                 header("Location: VueCreationListePublic.php");
                 break;
 

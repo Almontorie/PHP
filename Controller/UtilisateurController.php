@@ -84,7 +84,7 @@ class UtilisateurController
                 header("Location: VueCreationTache.php");
                 break;
 
-            case "idToDelete":
+            case "idToDeletePrivate":
                 $this->supprimerListeTache($_POST);
                 $tab = $this->chargementTabListTache();
                 header("Location: VueListeTache.php");

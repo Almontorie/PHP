@@ -66,7 +66,7 @@ session_start();
             <?php
         }
         try {
-            $action = "test";
+            $action = "";
 
             if(isset($_POST['id'])){
                 $action = "id";
@@ -92,7 +92,7 @@ session_start();
             }
 
             if(isset($_POST['completerTache'])){
-                $action = "completerTache";
+                $action = "completerTachePublique";
             }
 
             if(isset($_POST['inscription'])){
@@ -100,13 +100,15 @@ session_start();
             }
 
             if(isset($_POST['ajoutListe'])){
-                $action = "ajouterListe";
+                $action = "ajouterListePublique";
             }
 
+
             $front = new FrontController($action);
-            $tab = $front->getController()->chargementTabListTachePublique();
+            $tab = $front->chargement();
 
             affichTab($tab);
+
 
 
         } catch (PDOException $e){

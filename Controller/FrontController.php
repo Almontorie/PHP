@@ -15,14 +15,33 @@ class FrontController
 
     public function __construct($action)
     {
-        if($action == "connexionPseudoMdp" || $action == "inscriptionPseudoMdp"){
-            $this->controller = new UtilisateurController($action);
+
+
+        if(in_array($action,["","id","idToDelete","connexion","completerTachePublique","inscription","ajouterListePublique","creationListePubliqueNom","creationTachePubliqueNom"])){
+            if(!$this->isConnected()) {
+                $this->controller = new VisiteurController($action);
+                return;
+            }
+            elseif(in_array($action, ["ajouterListePublique","creationListePubliqueNom","idToDelete","completerTachePublique"])){
+                $this->controller = new VisiteurController($action);
+                return;
+            }
+            else{
+                $this->controller = new UtilisateurController($action);
+                return;
+            }
         }
-        if ($this->isConnected()){
-            $this->controller = new UtilisateurController($action);
-        }
-        else{
-            $this ->controller = new VisiteurController($action);
+
+        if(in_array($action, ["","deconnexion","listetache","connexionPseudoMdp","creationListeNom","creationTacheNom","inscriptionPseudoMdp","id","idToDeletePrivate","completerTache","accueil","ajoutTache"])){
+            if($this->isConnected()){
+                $this->controller = new UtilisateurController($action);
+            }
+            elseif (in_array($action, ["connexionPseudoMdp","inscriptionPseudoMdp"])){
+                $this->controller = new UtilisateurController($action);
+            }
+            else {
+                header("Location: ../Vue/VueConnexion?action");
+            }
         }
     }
 
@@ -41,5 +60,14 @@ class FrontController
         return isset($_SESSION['pseudo']);
     }
 
+    public function chargement(){
+        $controllerTMP = new VisiteurController("");
+        return $controllerTMP->chargementTabListTachePublique();
+    }
+
+    public function chargementPrivee(){
+        $controllerTMP = new UtilisateurController("");
+        return $controllerTMP->chargementTabListTache();
+    }
 
 }
