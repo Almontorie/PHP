@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Client :  localhost:3306
--- Généré le :  Mer 16 Janvier 2019 à 16:12
+-- Généré le :  Mer 16 Janvier 2019 à 17:53
 -- Version du serveur :  10.1.37-MariaDB-0+deb9u1
 -- Version de PHP :  7.0.33-0+deb9u1
 
@@ -39,7 +39,6 @@ CREATE TABLE `listetache` (
 INSERT INTO `listetache` (`id`, `nom`, `pseudo`) VALUES
 (28, 'ffez', 'Alexis Bouvard'),
 (25, 'lundi', 'Alexis Bouvard'),
-(32, 'test', 'lutorret'),
 (35, 'lundi', 'almontorie');
 
 -- --------------------------------------------------------
@@ -70,9 +69,6 @@ CREATE TABLE `tache` (
 --
 
 INSERT INTO `tache` (`nom`, `idListeTache`, `complete`) VALUES
-('test3', 32, 0),
-('test2', 32, 0),
-('ca', 32, 1),
 ('test', 35, 1),
 ('test2', 35, 1);
 
@@ -153,12 +149,12 @@ ALTER TABLE `utilisateur`
 -- AUTO_INCREMENT pour la table `listetache`
 --
 ALTER TABLE `listetache`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
 --
 -- AUTO_INCREMENT pour la table `listetachepublic`
 --
 ALTER TABLE `listetachepublic`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=70;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=75;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
