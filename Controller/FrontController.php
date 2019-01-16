@@ -17,12 +17,12 @@ class FrontController
     {
 
 
-        if(in_array($action,["","id","idToDelete","connexion","completerTachePublique","inscription","ajouterListePublique","creationListePubliqueNom","creationTachePubliqueNom"])){
+        if(in_array($action,["","id","idPublic","idToDelete","connexion","completerTachePublique","inscription","ajouterListePublique","creationListePubliqueNom","creationTachePubliqueNom"])){
             if(!$this->isConnected()) {
                 $this->controller = new VisiteurController($action);
                 return;
             }
-            elseif(in_array($action, ["ajouterListePublique","creationListePubliqueNom","idToDelete","completerTachePublique"])){
+            elseif(in_array($action, ["ajouterListePublique","creationListePubliqueNom","idToDelete","completerTachePublique","idPublic","creationTachePubliqueNom"])){
                 $this->controller = new VisiteurController($action);
                 return;
             }

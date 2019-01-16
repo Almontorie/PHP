@@ -23,7 +23,7 @@ class VisiteurController
 
         switch ($action){
 
-            case "id":
+            case "idPublic":
                 $_SESSION['id'] = $_POST['id'];
                 header("Location: VueCreationTachePublic.php");
                 break;

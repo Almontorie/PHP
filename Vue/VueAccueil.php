@@ -69,7 +69,7 @@ session_start();
             $action = "";
 
             if(isset($_POST['id'])){
-                $action = "id";
+                $action = "idPublic";
             }
 
             if(isset($_POST['idToDelete'])) {
