@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Client :  localhost:3306
--- Généré le :  Sam 12 Janvier 2019 à 09:55
+-- Généré le :  Mer 16 Janvier 2019 à 16:12
 -- Version du serveur :  10.1.37-MariaDB-0+deb9u1
 -- Version de PHP :  7.0.33-0+deb9u1
 
@@ -53,14 +53,6 @@ CREATE TABLE `listetachepublic` (
   `id` int(11) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
---
--- Contenu de la table `listetachepublic`
---
-
-INSERT INTO `listetachepublic` (`nom`, `id`) VALUES
-('mardi', 65),
-('ca', 69);
-
 -- --------------------------------------------------------
 
 --
@@ -78,6 +70,7 @@ CREATE TABLE `tache` (
 --
 
 INSERT INTO `tache` (`nom`, `idListeTache`, `complete`) VALUES
+('test3', 32, 0),
 ('test2', 32, 0),
 ('ca', 32, 1),
 ('test', 35, 1),
@@ -94,20 +87,6 @@ CREATE TABLE `tachepublic` (
   `idListeTache` int(11) NOT NULL,
   `complete` tinyint(1) NOT NULL DEFAULT '0'
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
-
---
--- Contenu de la table `tachepublic`
---
-
-INSERT INTO `tachepublic` (`nom`, `idListeTache`, `complete`) VALUES
-('et', 65, 1),
-('tyejyujyruj', 69, 1),
-('egerherh', 69, 1),
-('et ca', 69, 0),
-('test', 65, 1),
-('ca', 65, 1),
-('fdb dfbgb', 69, 0),
-('mard ca et ca', 69, 0);
 
 -- --------------------------------------------------------
 
